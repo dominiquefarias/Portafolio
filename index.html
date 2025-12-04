@@ -1,237 +1,332 @@
-<!-- Define que es un documento HTML5 -->
 <!DOCTYPE html>
-<!-- Raíz del documento, idioma español -->
 <html lang="es">
 
 <head>
-  <!-- Codificación de caracteres para tildes y ñ -->
   <meta charset="UTF-8" />
-  <!-- Configuración para móviles (responsive) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Título de la pestaña del navegador -->
   <title>Portafolio — Dominique Farías Osorio</title>
-  <!-- Icono de la pestaña (favicon) -->
   <link rel="icon" href="favicon1.png" type="image/png">
-  <!-- Estilos CSS internos -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* --- Paleta de Colores Pastel --- */
+    /* --- Variables de Diseño (Tema Lila Pastel Profesional) --- */
     :root {
-      --bg-principal: #faf5ff;
-      /* Fondo muy claro casi blanco */
-      --texto-principal: #4a3057;
-      /* Morado oscuro suave para leer */
-      --header-grad-1: #cc99e0;
-      /* Lila pastel */
-      --header-grad-2: #e2c2ee;
-      /* Lavanda suave */
-      --card-bg: #fffbfe;
-      /* Fondo de tarjeta casi blanco */
-      --card-border: #ecd6ff;
-      /* Borde lila muy claro */
-      --card-shadow: rgba(168, 126, 190, 0.25);
-      /* Sombra suave */
-      --card-hover-border: #dcb0f5;
-      /* Borde al pasar el ratón */
-      --titulo-card: #885a9e;
-      /* Título de proyecto morado medio */
-      --texto-card: #664a75;
-      /* Texto de descripción suave */
-      --boton-bg: #a878c4;
-      /* Botón lila pastel */
-      --boton-hover: #9665b3;
-      /* Botón un poco más oscuro al pasar */
-      --footer-bg: #78548a;
-      /* Footer morado apagado */
-      --footer-texto: #f3e3ff;
-      /* Texto claro en footer */
+      --bg-body: #fdfaff;
+      /* Blanco con tinte lila imperceptible */
+      --primary-color: #9c6ead;
+      /* Lila principal */
+      --primary-dark: #6a4c93;
+      /* Morado oscuro para textos */
+      --accent-color: #e2c2ee;
+      /* Acento pastel */
+      --white: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.9);
+      --shadow-soft: 0 10px 40px rgba(156, 110, 173, 0.15);
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --gradient-main: linear-gradient(135deg, #c4a7e7 0%, #ffc4e6 100%);
+    }
+
+    /* --- Reset Básico --- */
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg-principal);
-      color: var(--texto-principal);
+      font-family: 'Poppins', sans-serif;
+      /* Tipografía profesional */
+      background-color: var(--bg-body);
+      color: var(--primary-dark);
+      line-height: 1.6;
     }
 
+    /* --- Barra de Navegación --- */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 5%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      /* Efecto vidrio */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-brand:hover .nav-logo {
+      transform: rotate(10deg);
+    }
+
+    /* --- Header / Hero Section --- */
     header {
-      background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
-      color: white;
-      padding: 40px 20px;
+      background: var(--bg-body);
+      background-image: radial-gradient(circle at 10% 20%, rgba(226, 194, 238, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(196, 167, 231, 0.4) 0%, transparent 20%);
       text-align: center;
-      position: relative;
-      /* Necesario para posicionar el icono */
-      box-shadow: 0 2px 10px rgba(168, 126, 190, 0.2);
+      padding: 80px 20px 60px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.4rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* Texto degradado */
+      letter-spacing: -1px;
     }
 
     header h2 {
-      margin-top: 6px;
+      margin-top: 10px;
+      font-size: 1.2rem;
       font-weight: 300;
-      opacity: 0.95;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    /* --- CAMBIO AQUÍ: Icono a la izquierda --- */
-    .icon-header {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      /* Antes era right: 10px */
-      width: 50px;
-      height: 50px;
-      opacity: 0.8;
+    .btn-contact {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(156, 110, 173, 0.4);
+      transition: all 0.3s ease;
     }
 
+    .btn-contact:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(156, 110, 173, 0.6);
+    }
+
+    /* --- Sección Principal (Grid) --- */
     main {
       max-width: 1200px;
-      margin: auto;
-      padding: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
-    article {
-      background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 4px 15px var(--card-shadow);
-      overflow: hidden;
-      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-      border: 2px solid var(--card-border);
+    .section-title {
       text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: var(--primary-dark);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-main);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    /* --- Tarjetas de Proyectos --- */
+    article {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
     }
 
     article:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(168, 126, 190, 0.35);
-      border-color: var(--card-hover-border);
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-image-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
     }
 
     article img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
-      border-bottom: 2px solid var(--card-border);
-      opacity: 0.95;
-      transition: opacity 0.3s;
+      transition: transform 0.5s ease;
     }
 
     article:hover img {
-      opacity: 1;
+      transform: scale(1.05);
+      /* Zoom suave al pasar ratón */
+    }
+
+    .card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     article h3 {
-      margin: 18px 16px 10px;
-      font-size: 1.4rem;
-      color: var(--titulo-card);
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
     }
 
     article p {
-      margin: 0 16px 20px;
-      color: var(--texto-card);
-      line-height: 1.6;
+      margin: 0 0 20px;
+      color: #666;
       font-size: 0.95rem;
+      flex-grow: 1;
     }
 
-    article a {
+    .btn-project {
       display: inline-block;
-      margin: 0 16px 24px;
-      padding: 10px 20px;
-      background: var(--boton-bg);
-      color: white;
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+      border: 2px solid var(--accent-color);
+      color: var(--primary-color);
       text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: background .3s, transform 0.2s;
-      box-shadow: 0 2px 5px rgba(168, 126, 190, 0.3);
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
-    article a:hover {
-      background: var(--boton-hover);
-      transform: scale(1.05);
+    .btn-project:hover {
+      background: var(--accent-color);
+      color: var(--white);
     }
 
+    /* --- Footer --- */
     footer {
       text-align: center;
-      padding: 25px;
-      background: var(--footer-bg);
-      color: var(--footer-texto);
-      margin-top: 40px;
+      padding: 40px 20px;
+      background: linear-gradient(to top, #f3e6f5, white);
+      color: var(--primary-dark);
       font-size: 0.9rem;
+      margin-top: 60px;
+      border-top: 1px solid #eee;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      nav {
+        padding: 15px 20px;
+      }
     }
   </style>
 </head>
 
-<!-- Cuerpo visible de la página -->
-
 <body>
-  <!-- Encabezado principal -->
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="favicon1.png" alt="Logo" class="nav-logo">
+    </a>
+  </nav>
+
   <header>
-    <!-- Título principal (Nivel 1) -->
     <h1>Dominique Farías Osorio</h1>
-    <!-- Subtítulo (Nivel 2) -->
-    <h2>Portafolio Web</h2>
-    <!-- Imagen del logo/icono -->
-    <img src="favicon1.png" alt="Icono" class="icon-header">
+    <h2>Portafolio</h2>
+    <a href="mailto:dominiquefarias21@gmail.com" class="btn-contact">Contactar</a>
   </header>
 
-  <!-- Contenido principal de la página -->
   <main>
-    <!-- Artículo/Tarjeta de proyecto 1 -->
-    <article>
-      <!-- Imagen del proyecto -->
-      <img src="https://placehold.co/600x400/e2c2ee/885a9e?text=Agenda+CRUD" alt="Captura de Agenda CRUD">
-      <!-- Título del proyecto -->
-      <h3>AGENDA CRUD</h3>
-      <!-- Descripción del proyecto -->
-      <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar registros de forma
-        sencilla.</p>
-      <!-- Enlace al proyecto -->
-      <a href="#">Ver código</a>
-    </article>
-    <article>
-      <!-- Imagen del proyecto -->
-      <img src="Duelo_Magos.png" alt="Imagen del proyecto Duelo Magos">
-      <!-- Título del proyecto -->
-      <h3>DUELO MAGOS</h3>
-      <!-- Descripción del proyecto -->
-      <p>Un pequeño programa interactivo en Python que clasifica a un mago según su edad, calcula su poder base y simula
-        un duelo mágico en dos turnos.</p>
-      <!-- Enlace al proyecto -->
-      <a href="duelomagos.html">Saber más</a>
-    </article>
-    <article>
-      <!-- Imagen del proyecto -->
-      <img src="https://placehold.co/600x400/dcb0f5/885a9e?text=Panel+Grafico" alt="Captura de Panel Gráfico">
-      <!-- Título del proyecto -->
-      <h3>PANEL GRÁFICO</h3>
-      <!-- Descripción del proyecto -->
-      <p>Interfaz gráfica construida con Tkinter que muestra una tabla de clientes conectada a una base de datos MySQL.
-      </p>
-      <!-- Enlace al proyecto -->
-      <a href="#">Ver código</a>
-    </article>
-    <article>
-      <!-- Imagen del proyecto -->
-      <img src="https://placehold.co/600x400/cc99e0/white?text=Duelo+Dragones" alt="Captura de Duelo de Dragones">
-      <!-- Título del proyecto -->
-      <h3>DUELO DE DRAGONES</h3>
-      <!-- Descripción del proyecto -->
-      <p>Juego de texto donde dos dragones se enfrentan. El programa calcula atributos según la edad y simula un
-        combate.</p>
-      <!-- Enlace al proyecto -->
-      <a href="#">Ver código</a>
-    </article>
+    <h3 class="section-title">Mis Proyectos</h3>
+
+    <div class="projects-grid">
+      <article>
+        <div class="card-image-container">
+          <img src="https://placehold.co/600x400/e2c2ee/885a9e?text=Agenda+CRUD" alt="Agenda CRUD">
+        </div>
+        <div class="card-content">
+          <h3>AGENDA CRUD</h3>
+          <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar registros de forma
+            optimizada.</p>
+          <a href="#" class="btn-project">Ver Código</a>
+        </div>
+      </article>
+
+      <article>
+        <div class="card-image-container">
+          <img src="Duelo_Magos.png" alt="Duelo de Magos">
+        </div>
+        <div class="card-content">
+          <h3>DUELO DE MAGOS</h3>
+          <p>Simulador interactivo en Python. Clasifica magos por edad y ejecuta combates basados en turnos y cálculo de
+            daño.</p>
+          <a href="duelomagos.html" class="btn-project">Ver Demo</a>
+        </div>
+      </article>
+
+      <article>
+        <div class="card-image-container">
+          <img src="https://placehold.co/600x400/dcb0f5/885a9e?text=Panel+Grafico" alt="Panel Gráfico">
+        </div>
+        <div class="card-content">
+          <h3>PANEL GRÁFICO</h3>
+          <p>Interfaz moderna con Tkinter conectada a MySQL. Visualización de datos en tiempo real con diseño intuitivo.
+          </p>
+          <a href="#" class="btn-project">Ver Código</a>
+        </div>
+      </article>
+
+      <article>
+        <div class="card-image-container">
+          <img src="https://placehold.co/600x400/cc99e0/white?text=Duelo+Dragones" alt="Entrenamiento de Dragones">
+        </div>
+        <div class="card-content">
+          <h3>ENTRENAMIENTO DE DRAGONES</h3>
+          <p>Simulación de estrategia donde dos dragones entrenan. Uso de lógica condicional avanzada.</p>
+          <a href="entrenamientos_dragones.html" class="btn-project">Ver Demo</a>
+        </div>
+      </article>
+    </div>
   </main>
 
-  <!-- Pie de página -->
   <footer>
-    dominique.code@gmail.com — +34 600 00 00 00
+    <p>© 2025 Dominique Farías Osorio. Todos los derechos reservados.</p>
+    <p>dominique.code@gmail.com | España</p>
   </footer>
+
 </body>
 
 </html>
