@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto — Gestor SQLite</title>
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- Variables de Diseño (Tema Pastel Profesional) --- */
+        :root {
+            --bg-body: #fdfaff;
+            --primary-color: #9c6ead;
+            --primary-dark: #5d4069;
+            --accent-color: #e2c2ee;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --shadow-card: 0 10px 30px rgba(156, 110, 173, 0.15);
+            --gradient-text: linear-gradient(135deg, #9c6ead 0%, #d48fc4 100%);
+
+            /* Colores de Sintaxis de Código (Tema Pastel Dark) */
+            --code-bg: #282a36;
+            --code-text: #f8f8f2;
+            --code-comment: #6272a4;
+            --code-purple: #bd93f9;
+            --code-pink: #ff79c6;
+            --code-green: #50fa7b;
+            --code-yellow: #f1fa8c;
+            --code-orange: #ffb86c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--primary-dark);
+            line-height: 1.7;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-left:hover .nav-logo {
+            transform: rotate(-10deg);
+        }
+
+        .btn-back {
+            padding: 8px 20px;
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* --- Header del Proyecto --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #f3e6f5;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* --- Layout Principal (Grid) --- */
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            /* Más espacio para el código */
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Columna Izquierda: Info */
+        .project-info img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
+            border: 4px solid white;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul.features {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul.features li::before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Columna Derecha: Código */
+        .code-window {
+            background-color: var(--code-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #44475a;
+        }
+
+        .window-header {
+            background-color: #191a21;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #383a4a;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff5f56;
+        }
+
+        .yellow {
+            background: #ffbd2e;
+        }
+
+        .green {
+            background: #27c93f;
+        }
+
+        .filename {
+            color: #f8f8f2;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-left: 10px;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+            color: var(--code-text);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Estilos de Sintaxis Manual */
+        pre {
+            margin: 0;
+        }
+
+        .c-func {
+            color: var(--code-green);
+        }
+
+        .c-keyword {
+            color: var(--code-pink);
+            font-weight: 500;
+        }
+
+        .c-string {
+            color: var(--code-yellow);
+        }
+
+        .c-number {
+            color: var(--code-purple);
+        }
+
+        .c-var {
+            color: var(--code-text);
+        }
+
+        .c-comment {
+            color: var(--code-comment);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-left">
+            <img src="favicon1.png" alt="Logo" class="nav-logo">
+        </a>
+        <a href="index.html" class="btn-back">← Volver al Inicio</a>
+    </nav>
+
+    <header>
+        <span class="project-tag">Python + SQLite</span>
+        <h1>Gestor de Clientes</h1>
+    </header>
+
+    <div class="project-container">
+
+        <div class="project-info">
+
+            <h3>Lógica del Proyecto</h3>
+            <p>
+                Este sistema implementa una agenda completa con persistencia de datos mediante <strong>SQLite</strong>.
+                Permite administrar una base de datos de clientes realizando operaciones CRUD (Crear, Leer, Actualizar y
+                Eliminar)
+                directamente desde la consola.
+            </p>
+            <p>
+                Utiliza un menú interactivo infinito que permite al usuario gestionar los registros de la tabla
+                <code>clientes</code> de forma dinámica y segura.
+            </p>
+
+            <h3>Características Técnicas</h3>
+            <ul class="features">
+                <li>Conexión a Base de Datos con <code>sqlite3</code>.</li>
+                <li>Consultas SQL parametrizadas para evitar inyecciones.</li>
+                <li>Manejo de flujo con <code>while True</code>.</li>
+                <li>Operaciones SQL: <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code>, <code>DELETE</code>.
+                </li>
+                <li>Persistencia de cambios mediante <code>commit()</code>.</li>
+            </ul>
+        </div>
+
+        <div class="code-window">
+            <div class="window-header">
+                <div class="dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="filename">agenda_sqlite.py</span>
+            </div>
+
+            <div class="code-content">
+                <pre><code>
+<span class="c-keyword">import</span> sqlite3
+
+<span class="c-comment"># --- Conexión a la BBDD ---</span>
+conexion = sqlite3.connect(<span class="c-string">"empresa.db"</span>)
+cursor = conexion.cursor()
+
+<span class="c-func">print</span>(<span class="c-string">"Programa agenda SQLite Dominique Farias"</span>)
+
+<span class="c-comment"># --- Bucle del Menú Principal ---</span>
+<span class="c-keyword">while</span> <span class="c-keyword">True</span>:
+    <span class="c-func">print</span>(<span class="c-string">"Escoge una opción:\n1.-Crear cliente\n2.-Listar clientes\n3.-Actualizar clientes\n4.-Eliminar clientes\n5.-Salir del programa"</span>)
+    
+    opcion = <span class="c-func">int</span>(<span class="c-func">input</span>(<span class="c-string">"Selecciona una opcion: "</span>))
+    
+    <span class="c-comment"># 1. Crear Cliente</span>
+    <span class="c-keyword">if</span> opcion == <span class="c-number">1</span>:
+        nombre = <span class="c-func">input</span>(<span class="c-string">"Introduce el nombre del cliente:"</span>)
+        apellidos = <span class="c-func">input</span>(<span class="c-string">"Introduce los apellidos del cliente:"</span>)
+        email = <span class="c-func">input</span>(<span class="c-string">"Introduce el email del cliente: "</span>)
+        
+        cursor.execute(<span class="c-string">"""
+            INSERT INTO clientes (nombre, apellidos, email) VALUES (?, ?, ?);
+        """</span>, (nombre, apellidos, email))
+        conexion.commit()
+        
+    <span class="c-comment"># 2. Listar Clientes</span>
+    <span class="c-keyword">elif</span> opcion == <span class="c-number">2</span>:
+        cursor.execute(<span class="c-string">'SELECT * FROM clientes;'</span>)
+        filas = cursor.fetchall()
+        <span class="c-keyword">for</span> fila <span class="c-keyword">in</span> filas:
+            <span class="c-func">print</span>(fila)
+
+    <span class="c-comment"># 3. Actualizar Cliente</span>
+    <span class="c-keyword">elif</span> opcion == <span class="c-number">3</span>:
+        identificador = <span class="c-func">input</span>(<span class="c-string">"Introduce el identificador a actualizar:"</span>)
+        nombre = <span class="c-func">input</span>(<span class="c-string">"Introduce el nombre del nuevo cliente:"</span>)
+        apellidos = <span class="c-func">input</span>(<span class="c-string">"Introduce los apellidos del nuevo cliente:"</span>)
+        email = <span class="c-func">input</span>(<span class="c-string">"Introduce el email del nuevo cliente: "</span>)
+        
+        cursor.execute(<span class="c-string">"""
+            UPDATE clientes SET
+            nombre = ?,
+            apellidos = ?,
+            email = ?
+            WHERE Identificador = ?;
+        """</span>, (nombre, apellidos, email, identificador))
+        conexion.commit()
+            
+    <span class="c-comment"># 4. Eliminar Cliente</span>
+    <span class="c-keyword">elif</span> opcion == <span class="c-number">4</span>:
+        identificador = <span class="c-func">input</span>(<span class="c-string">"Introduce el identificador a eliminar: "</span>)
+        cursor.execute(<span class="c-string">"""
+            DELETE FROM clientes WHERE Identificador = ?;
+        """</span>, (identificador,))
+        conexion.commit()
+
+    <span class="c-comment"># 5. Salir</span>
+    <span class="c-keyword">elif</span> opcion == <span class="c-number">5</span>:
+        <span class="c-func">print</span>(<span class="c-string">"byebye"</span>)
+        <span class="c-func">exit</span>()
+</code></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2025 Dominique Farias | Diseño Pastel
+    </footer>
+</body>
+
+</html>

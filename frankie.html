@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto — Visor de Clientes SQL</title>
+    <link rel="icon" href="favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- Variables de Diseño (Tema Pastel Profesional) --- */
+        :root {
+            --bg-body: #fdfaff;
+            --primary-color: #9c6ead;
+            --primary-dark: #5d4069;
+            --accent-color: #e2c2ee;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --shadow-card: 0 10px 30px rgba(156, 110, 173, 0.15);
+            --gradient-text: linear-gradient(135deg, #9c6ead 0%, #d48fc4 100%);
+
+            /* Colores de Sintaxis de Código (Tema Pastel Dark) */
+            --code-bg: #282a36;
+            --code-text: #f8f8f2;
+            --code-comment: #6272a4;
+            --code-purple: #bd93f9;
+            --code-pink: #ff79c6;
+            --code-green: #50fa7b;
+            --code-yellow: #f1fa8c;
+            --code-orange: #ffb86c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--primary-dark);
+            line-height: 1.7;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-left:hover .nav-logo {
+            transform: rotate(-10deg);
+        }
+
+        .btn-back {
+            padding: 8px 20px;
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* --- Header del Proyecto --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #f3e6f5;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* --- Layout Principal (Grid) --- */
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Columna Izquierda: Info */
+        .project-info img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
+            border: 4px solid white;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        ul.features {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul.features li::before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Columna Derecha: Código */
+        .code-window {
+            background-color: var(--code-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid #44475a;
+        }
+
+        .window-header {
+            background-color: #191a21;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #383a4a;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff5f56;
+        }
+
+        .yellow {
+            background: #ffbd2e;
+        }
+
+        .green {
+            background: #27c93f;
+        }
+
+        .filename {
+            color: #f8f8f2;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-left: 10px;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+            color: var(--code-text);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Estilos de Sintaxis Manual */
+        pre {
+            margin: 0;
+        }
+
+        .c-func {
+            color: var(--code-green);
+        }
+
+        .c-keyword {
+            color: var(--code-pink);
+            font-weight: 500;
+        }
+
+        .c-string {
+            color: var(--code-yellow);
+        }
+
+        .c-number {
+            color: var(--code-purple);
+        }
+
+        .c-var {
+            color: var(--code-text);
+        }
+
+        .c-comment {
+            color: var(--code-comment);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .project-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-left">
+            <img src="favicon1.png" alt="Logo" class="nav-logo">
+        </a>
+        <a href="index.html" class="btn-back">← Volver al Inicio</a>
+    </nav>
+
+    <header>
+        <span class="project-tag">Python & SQL</span>
+        <h1>Visor de Clientes</h1>
+    </header>
+
+    <div class="project-container">
+
+        <div class="project-info">
+
+            <h3>Lógica del Proyecto</h3>
+            <p>
+                Esta aplicación de escritorio utiliza la librería gráfica <strong>Tkinter</strong> para crear una
+                interfaz de usuario visual.
+                El programa establece una conexión directa con una base de datos <strong>MySQL</strong> local.
+            </p>
+            <p>
+                Mediante consultas SQL, extrae la información de la tabla "clientes" y la renderiza dinámicamente
+                en un widget de tipo <code>Treeview</code> (tabla), permitiendo visualizar DNI, nombre, apellidos y
+                email de forma organizada.
+            </p>
+
+            <h3>Características Técnicas</h3>
+            <ul class="features">
+                <li>Interfaz gráfica (GUI) con <code>tkinter</code>.</li>
+                <li>Conexión a Base de Datos con <code>mysql.connector</code>.</li>
+                <li>Visualización de datos mediante <code>ttk.Treeview</code>.</li>
+                <li>Ejecución de consultas SQL (<code>SELECT</code>).</li>
+                <li>Iteración de resultados con bucles <code>for</code>.</li>
+            </ul>
+        </div>
+
+        <div class="code-window">
+            <div class="window-header">
+                <div class="dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="filename">clientes_gui.py</span>
+            </div>
+
+            <div class="code-content">
+                <pre><code>
+<span class="c-keyword">import</span> tkinter <span class="c-keyword">as</span> tk
+<span class="c-keyword">from</span> tkinter <span class="c-keyword">import</span> ttk
+<span class="c-keyword">import</span> mysql.connector
+
+<span class="c-comment"># --- Conexión a Base de Datos ---</span>
+conexion = mysql.connector.<span class="c-func">connect</span>(
+    host=<span class="c-string">"localhost"</span>,
+    user=<span class="c-string">"empresadam"</span>,
+    password=<span class="c-string">"Empresadam123$"</span>,
+    database=<span class="c-string">"empresadam"</span>
+)
+cursor = conexion.<span class="c-func">cursor</span>()
+
+<span class="c-comment"># --- Configuración de la Ventana ---</span>
+ventana = tk.<span class="c-func">Tk</span>()
+arbol = ttk.<span class="c-func">Treeview</span>(ventana, columns=(<span class="c-string">"dninie"</span>,<span class="c-string">"nombre"</span>, <span class="c-string">"apellidos"</span>,<span class="c-string">"email"</span>), show=<span class="c-string">"headings"</span>)
+
+<span class="c-comment"># --- Definición de Cabeceras ---</span>
+arbol.<span class="c-func">heading</span>(<span class="c-string">"dninie"</span>, text=<span class="c-string">"DNI del cliente"</span>)
+arbol.<span class="c-func">heading</span>(<span class="c-string">"nombre"</span>, text=<span class="c-string">"Nombre del cliente"</span>)
+arbol.<span class="c-func">heading</span>(<span class="c-string">"apellidos"</span>, text=<span class="c-string">"Apellidos del cliente"</span>)
+arbol.<span class="c-func">heading</span>(<span class="c-string">"email"</span>, text=<span class="c-string">"Email del cliente"</span>)
+
+<span class="c-comment"># --- Consulta SQL y Llenado de Tabla ---</span>
+cursor.<span class="c-func">execute</span>(<span class="c-string">'''SELECT * FROM clientes;'''</span>)
+filas = cursor.<span class="c-func">fetchall</span>()
+
+<span class="c-keyword">for</span> fila <span class="c-keyword">in</span> filas:
+    <span class="c-comment"># Insertamos los datos recuperados en el árbol</span>
+    arbol.<span class="c-func">insert</span>(<span class="c-string">""</span>, <span class="c-string">"end"</span>, values=(fila[<span class="c-number">1</span>], fila[<span class="c-number">2</span>], fila[<span class="c-number">3</span>], fila[<span class="c-number">4</span>]))
+
+arbol.<span class="c-func">pack</span>(padx=<span class="c-number">20</span>,pady=<span class="c-number">20</span>)
+
+<span class="c-comment"># --- Bucle Principal ---</span>
+ventana.<span class="c-func">mainloop</span>()
+</code></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2025 Dominique Farias | Diseño Pastel
+    </footer>
+</body>
+
+</html>
