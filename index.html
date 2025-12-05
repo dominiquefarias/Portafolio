@@ -12,21 +12,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- Variables de Diseño (Tema Lila Pastel Profesional) --- */
+    /* ---------------------------------------------------- */
+    /* --- Variables de Diseño (Tema Tierra y Naturaleza, basado en la imagen de Dragones) --- */
     :root {
-      --bg-body: #fdfaff;
-      /* Blanco con tinte lila imperceptible */
-      --primary-color: #9c6ead;
-      /* Lila principal */
-      --primary-dark: #6a4c93;
-      /* Morado oscuro para textos */
-      --accent-color: #e2c2ee;
-      /* Acento pastel */
+      /* Colores principales basados en la paleta del pergamino y los dragones */
+      --bg-body: #F0E5D3;
+      /* Fondo Pergamino claro */
+      --primary-color: #A87C62;
+      /* Marrón Terracota (Dragón B) - Principal para botones/acentos */
+      --primary-dark: #3A2C22;
+      /* Marrón Oscuro (Texto/Contornos) - Para textos y títulos */
+      --accent-color: #8DC36E;
+      /* Verde (Dragón A) - Acento fresco */
       --white: #ffffff;
       --glass-bg: rgba(255, 255, 255, 0.9);
-      --shadow-soft: 0 10px 40px rgba(156, 110, 173, 0.15);
+      --shadow-soft: 0 10px 40px rgba(58, 44, 34, 0.1);
       --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
-      --gradient-main: linear-gradient(135deg, #c4a7e7 0%, #ffc4e6 100%);
+      --gradient-main: linear-gradient(135deg, #A87C62 0%, #8DC36E 100%);
+      /* Degradado Marrón a Verde */
     }
 
     /* --- Reset Básico --- */
@@ -82,8 +85,9 @@
     /* --- Header / Hero Section --- */
     header {
       background: var(--bg-body);
-      background-image: radial-gradient(circle at 10% 20%, rgba(226, 194, 238, 0.4) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(196, 167, 231, 0.4) 0%, transparent 20%);
+      /* Fondo con patrón sutil de los colores primarios */
+      background-image: radial-gradient(circle at 10% 20%, rgba(141, 195, 110, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(168, 124, 98, 0.4) 0%, transparent 20%);
       text-align: center;
       padding: 80px 20px 60px;
     }
@@ -103,7 +107,8 @@
       margin-top: 10px;
       font-size: 1.2rem;
       font-weight: 300;
-      color: #888;
+      color: #6d6d6d;
+      /* Tono neutro para subtítulo */
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -117,14 +122,14 @@
       text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(156, 110, 173, 0.4);
+      box-shadow: 0 4px 15px rgba(168, 124, 98, 0.4);
       transition: all 0.3s ease;
     }
 
     .btn-contact:hover {
       background: var(--primary-dark);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(156, 110, 173, 0.6);
+      box-shadow: 0 8px 20px rgba(58, 44, 34, 0.6);
     }
 
     /* --- Sección Principal (Grid) --- */
@@ -145,11 +150,16 @@
     .section-title::after {
       content: '';
       display: block;
-      width: 60px;
-      height: 4px;
+      width: 80px;
+      /* Más ancho (de 60px a 80px) */
+      height: 6px;
+      /* Más alto (de 4px a 6px) */
       background: var(--gradient-main);
       margin: 10px auto 0;
-      border-radius: 2px;
+      border-radius: 3px;
+      /* Borde más suave */
+      box-shadow: 0 0 10px rgba(168, 124, 98, 0.5);
+      /* Sombra para que destaque */
     }
 
     .projects-grid {
@@ -219,7 +229,9 @@
       width: 100%;
       text-align: center;
       border: 2px solid var(--accent-color);
+      /* Borde verde */
       color: var(--primary-color);
+      /* Texto marrón */
       text-decoration: none;
       border-radius: 12px;
       font-weight: 600;
@@ -228,6 +240,7 @@
 
     .btn-project:hover {
       background: var(--accent-color);
+      /* Fondo verde al pasar el ratón */
       color: var(--white);
     }
 
@@ -235,7 +248,8 @@
     footer {
       text-align: center;
       padding: 40px 20px;
-      background: linear-gradient(to top, #f3e6f5, white);
+      background: linear-gradient(to top, #E8D5B7, white);
+      /* Degradado suave del color del pergamino */
       color: var(--primary-dark);
       font-size: 0.9rem;
       margin-top: 60px;
@@ -289,7 +303,8 @@
         </div>
         <div class="card-content">
           <h3>AGENDA CRUD</h3>
-          <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar registros de forma
+          <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar
+            registros de forma
             optimizada.</p>
           <a href="crud completo.html" class="btn-project">Ver Demo</a>
         </div>
@@ -302,7 +317,8 @@
         </div>
         <div class="card-content">
           <h3>PANEL GRÁFICO</h3>
-          <p>Interfaz moderna con Tkinter conectada a MySQL. Visualización de datos en tiempo real con diseño intuitivo.
+          <p>Interfaz moderna con Tkinter conectada a MySQL. Visualización de datos en tiempo real con diseño
+            intuitivo.
           </p>
           <a href="frankie.html" class="btn-project">Ver Demo</a>
         </div>
