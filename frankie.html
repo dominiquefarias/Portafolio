@@ -14,25 +14,39 @@
         rel="stylesheet">
 
     <style>
-        /* --- Variables de Diseño (Tema Pastel Profesional) --- */
+        /* ---------------------------------------------------- */
+        /* --- Variables de Diseño (Tema Tierra y Naturaleza) --- */
         :root {
-            --bg-body: #fdfaff;
-            --primary-color: #9c6ead;
-            --primary-dark: #5d4069;
-            --accent-color: #e2c2ee;
+            --bg-body: #F0E5D3;
+            /* Fondo Pergamino claro */
+            --primary-color: #A87C62;
+            /* Marrón Terracota (Botones/Acentos) */
+            --primary-dark: #3A2C22;
+            /* Marrón Oscuro (Textos) */
+            --accent-color: #8DC36E;
+            /* Verde (Acento fresco) */
             --glass-bg: rgba(255, 255, 255, 0.9);
-            --shadow-card: 0 10px 30px rgba(156, 110, 173, 0.15);
-            --gradient-text: linear-gradient(135deg, #9c6ead 0%, #d48fc4 100%);
+            --shadow-card: 0 10px 30px rgba(58, 44, 34, 0.15);
+            /* Sombra suave marrón */
+            --gradient-text: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            /* Degradado Marrón a Verde */
+            --white: #ffffff;
 
-            /* Colores de Sintaxis de Código (Tema Pastel Dark) */
-            --code-bg: #282a36;
-            --code-text: #f8f8f2;
-            --code-comment: #6272a4;
-            --code-purple: #bd93f9;
-            --code-pink: #ff79c6;
-            --code-green: #50fa7b;
-            --code-yellow: #f1fa8c;
-            --code-orange: #ffb86c;
+            /* Colores de Sintaxis de Código (Tema Oscuro Tierra) */
+            --code-bg: #212121;
+            /* Fondo oscuro profundo */
+            --code-text: #f8f8ff;
+            /* Texto claro */
+            --code-comment: #828282;
+            /* Gris suave */
+            --code-keyword: #D77969;
+            /* Terracota para palabras clave */
+            --code-func: #99B990;
+            /* Verde Salvia para funciones */
+            --code-string: #E0C792;
+            /* Oro Suave para textos */
+            --code-number: #A5A5C7;
+            /* Lila sutil para números */
         }
 
         * {
@@ -70,9 +84,13 @@
             font-weight: 600;
         }
 
+        /* --- LOGO AUMENTADO --- */
         .nav-logo {
-            width: 40px;
-            height: 40px;
+            width: 75px;
+            /* Aumentado a 75px */
+            height: 75px;
+            /* Aumentado a 75px */
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
@@ -83,9 +101,11 @@
         .btn-back {
             padding: 8px 20px;
             border: 2px solid var(--accent-color);
+            /* Borde verde */
             border-radius: 20px;
             text-decoration: none;
             color: var(--primary-color);
+            /* Texto marrón */
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s;
@@ -104,7 +124,8 @@
 
         .project-tag {
             display: inline-block;
-            background: #f3e6f5;
+            background: #e8d5b7;
+            /* Tono del pergamino ligeramente más oscuro */
             color: var(--primary-color);
             padding: 5px 15px;
             border-radius: 50px;
@@ -113,6 +134,7 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: 1px solid var(--primary-color);
         }
 
         header h1 {
@@ -141,7 +163,7 @@
             border-radius: 20px;
             box-shadow: var(--shadow-card);
             margin-bottom: 30px;
-            border: 4px solid white;
+            border: 4px solid var(--white);
         }
 
         h3 {
@@ -168,6 +190,7 @@
         ul.features li::before {
             content: "✓";
             color: var(--primary-color);
+            /* Marrón */
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -238,20 +261,20 @@
         }
 
         .c-func {
-            color: var(--code-green);
+            color: var(--code-func);
         }
 
         .c-keyword {
-            color: var(--code-pink);
+            color: var(--code-keyword);
             font-weight: 500;
         }
 
         .c-string {
-            color: var(--code-yellow);
+            color: var(--code-string);
         }
 
         .c-number {
-            color: var(--code-purple);
+            color: var(--code-number);
         }
 
         .c-var {
@@ -268,8 +291,9 @@
             text-align: center;
             padding: 40px;
             margin-top: 50px;
+            background: linear-gradient(to top, #E8D5B7, #F0E5D3);
             border-top: 1px solid #eee;
-            color: #888;
+            color: var(--primary-dark);
             font-size: 0.9rem;
         }
 
@@ -376,7 +400,7 @@ ventana.<span class="c-func">mainloop</span>()
     </div>
 
     <footer>
-        © 2025 Dominique Farias | Diseño Pastel
+        © 2025 Dominique Farias 
     </footer>
 </body>
 
