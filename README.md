@@ -45,8 +45,6 @@ Este repositorio combina tecnologías web para la presentación y tecnologías d
 
 ## 📬 Contacto
 
-Si te interesa mi trabajo o quieres colaborar en algún proyecto, no dudes en contactarme:
-
 * **Email:** dominiquefarias21@gmail.com
 * **Ubicación:** España
 
