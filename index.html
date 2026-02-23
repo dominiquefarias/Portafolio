@@ -5,268 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portafolio — Dominique Farías Osorio</title>
-  <link rel="icon" href="favicon1.png" type="image/png">
+  <link rel="icon" href="img/favicon1.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* ---------------------------------------------------- */
-    /* --- Variables de Diseño (Tema Tierra y Naturaleza, basado en la imagen de Dragones) --- */
-    :root {
-      /* Colores principales basados en la paleta del pergamino y los dragones */
-      --bg-body: #F0E5D3;
-      /* Fondo Pergamino claro */
-      --primary-color: #A87C62;
-      /* Marrón Terracota (Dragón B) - Principal para botones/acentos */
-      --primary-dark: #3A2C22;
-      /* Marrón Oscuro (Texto/Contornos) - Para textos y títulos */
-      --accent-color: #8DC36E;
-      /* Verde (Dragón A) - Acento fresco */
-      --white: #ffffff;
-      --glass-bg: rgba(255, 255, 255, 0.9);
-      --shadow-soft: 0 10px 40px rgba(58, 44, 34, 0.1);
-      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
-      --gradient-main: linear-gradient(135deg, #A87C62 0%, #8DC36E 100%);
-      /* Degradado Marrón a Verde */
-    }
-
-    /* --- Reset Básico --- */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      /* Tipografía profesional */
-      background-color: var(--bg-body);
-      color: var(--primary-dark);
-      line-height: 1.6;
-    }
-
-    /* --- Barra de Navegación --- */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 5%;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      /* Efecto vidrio */
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--primary-dark);
-      text-decoration: none;
-    }
-
-    .nav-logo {
-      width: 65px;
-      height: 65px;
-      object-fit: contain;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-brand:hover .nav-logo {
-      transform: rotate(10deg);
-    }
-
-    /* --- Header / Hero Section --- */
-    header {
-      background: var(--bg-body);
-      /* Fondo con patrón sutil de los colores primarios */
-      background-image: radial-gradient(circle at 10% 20%, rgba(141, 195, 110, 0.4) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(168, 124, 98, 0.4) 0%, transparent 20%);
-      text-align: center;
-      padding: 80px 20px 60px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 3.5rem;
-      font-weight: 700;
-      background: var(--gradient-main);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /* Texto degradado */
-      letter-spacing: -1px;
-    }
-
-    header h2 {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: #6d6d6d;
-      /* Tono neutro para subtítulo */
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .btn-contact {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 30px;
-      background: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(168, 124, 98, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .btn-contact:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(58, 44, 34, 0.6);
-    }
-
-    /* --- Sección Principal (Grid) --- */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
-      color: var(--primary-dark);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      /* Más ancho (de 60px a 80px) */
-      height: 6px;
-      /* Más alto (de 4px a 6px) */
-      background: var(--gradient-main);
-      margin: 10px auto 0;
-      border-radius: 3px;
-      /* Borde más suave */
-      box-shadow: 0 0 10px rgba(168, 124, 98, 0.5);
-      /* Sombra para que destaque */
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    /* --- Tarjetas de Proyectos --- */
-    article {
-      background: var(--white);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      display: flex;
-      flex-direction: column;
-    }
-
-    article:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-image-container {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-    }
-
-    article img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    article:hover img {
-      transform: scale(1.05);
-      /* Zoom suave al pasar ratón */
-    }
-
-    .card-content {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    article h3 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-      color: var(--primary-dark);
-    }
-
-    article p {
-      margin: 0 0 20px;
-      color: #666;
-      font-size: 0.95rem;
-      flex-grow: 1;
-    }
-
-    .btn-project {
-      display: inline-block;
-      padding: 10px 0;
-      width: 100%;
-      text-align: center;
-      border: 2px solid var(--accent-color);
-      /* Borde verde */
-      color: var(--primary-color);
-      /* Texto marrón */
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .btn-project:hover {
-      background: var(--accent-color);
-      /* Fondo verde al pasar el ratón */
-      color: var(--white);
-    }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(to top, #E8D5B7, white);
-      /* Degradado suave del color del pergamino */
-      color: var(--primary-dark);
-      font-size: 0.9rem;
-      margin-top: 60px;
-      border-top: 1px solid #eee;
-    }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      nav {
-        padding: 15px 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -289,38 +33,38 @@
     <div class="projects-grid">
       <article>
         <div class="card-image-container">
-          <img src="entrenamiento de dragones.png" alt="Entrenamiento de Dragones">
+          <img src="img/entrenamiento de dragones.png" alt="Entrenamiento de Dragones">
         </div>
         <div class="card-content">
           <h3>ENTRENAMIENTO DE DRAGONES</h3>
           <p>Simulación de estrategia donde dos dragones entrenan. Uso de lógica condicional avanzada.</p>
-          <a href="entrenamientos_dragones.html" class="btn-project">Ver Demo</a>
+          <a href="html/entrenamientos_dragones.html" class="btn-project">Ver Demo</a>
         </div>
       </article>
       <article>
         <div class="card-image-container">
-          <img src="listsa_crud.png" alt="Agenda CRUD">
+          <img src="img/listsa_crud.png" alt="Agenda CRUD">
         </div>
         <div class="card-content">
           <h3>AGENDA CRUD</h3>
           <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar
             registros de forma
             optimizada.</p>
-          <a href="crud completo.html" class="btn-project">Ver Demo</a>
+          <a href="html/crud completo.html" class="btn-project">Ver Demo</a>
         </div>
       </article>
 
 
       <article>
         <div class="card-image-container">
-          <img src="panel_grafico.png" alt="Panel Gráfico">
+          <img src="img/panel_grafico.png" alt="Panel Gráfico">
         </div>
         <div class="card-content">
           <h3>PANEL GRÁFICO</h3>
           <p>Interfaz moderna con Tkinter conectada a MySQL. Visualización de datos en tiempo real con diseño
             intuitivo.
           </p>
-          <a href="frankie.html" class="btn-project">Ver Demo</a>
+          <a href="html/frankie.html" class="btn-project">Ver Demo</a>
         </div>
       </article>
 
