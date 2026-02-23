@@ -12,8 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="../css/frankie.css">
+
 </head>
 
 <body>
@@ -33,27 +33,21 @@
     <div class="project-container">
 
         <div class="project-info">
-
             <h3>Lógica del Proyecto</h3>
             <p>
-                Esta aplicación de escritorio utiliza la librería gráfica <strong>Tkinter</strong> para crear una
-                interfaz de usuario visual.
-                El programa establece una conexión directa con una base de datos <strong>MySQL</strong> local.
-            </p>
-            <p>
-                Mediante consultas SQL, extrae la información de la tabla "clientes" y la renderiza dinámicamente
-                en un widget de tipo <code>Treeview</code> (tabla), permitiendo visualizar DNI, nombre, apellidos y
-                email de forma organizada.
+                Esta aplicación utiliza <strong>Tkinter</strong> para la interfaz y <code>mysql.connector</code> para la
+                persistencia.
+                Los datos se renderizan dinámicamente en un widget <code>Treeview</code>.
             </p>
 
             <h3>Características Técnicas</h3>
             <ul class="features">
-                <li>Interfaz gráfica (GUI) con <code>tkinter</code>.</li>
-                <li>Conexión a Base de Datos con <code>mysql.connector</code>.</li>
-                <li>Visualización de datos mediante <code>ttk.Treeview</code>.</li>
-                <li>Ejecución de consultas SQL (<code>SELECT</code>).</li>
-                <li>Iteración de resultados con bucles <code>for</code>.</li>
+                <li>Interfaz gráfica (GUI) nativa.</li>
+                <li>Conexión a <strong>MySQL</strong>.</li>
+                <li>Mapeo de registros mediante bucles.</li>
             </ul>
+
+            <button class="run-btn" onclick="abrirVisor()">▶ EJECUTAR VISOR GUI</button>
         </div>
 
         <div class="code-window">
@@ -72,7 +66,6 @@
 <span class="c-keyword">from</span> tkinter <span class="c-keyword">import</span> ttk
 <span class="c-keyword">import</span> mysql.connector
 
-<span class="c-comment"># --- Conexión a Base de Datos ---</span>
 conexion = mysql.connector.<span class="c-func">connect</span>(
     host=<span class="c-string">"localhost"</span>,
     user=<span class="c-string">"empresadam"</span>,
@@ -81,37 +74,103 @@ conexion = mysql.connector.<span class="c-func">connect</span>(
 )
 cursor = conexion.<span class="c-func">cursor</span>()
 
-<span class="c-comment"># --- Configuración de la Ventana ---</span>
 ventana = tk.<span class="c-func">Tk</span>()
-arbol = ttk.<span class="c-func">Treeview</span>(ventana, columns=(<span class="c-string">"dninie"</span>,<span class="c-string">"nombre"</span>, <span class="c-string">"apellidos"</span>,<span class="c-string">"email"</span>), show=<span class="c-string">"headings"</span>)
+arbol = ttk.<span class="c-func">Treeview</span>(ventana, columns=(<span class="c-string">"dninie"</span>, <span class="c-string">"nombre"</span>, <span class="c-string">"apellidos"</span>, <span class="c-string">"email"</span>), show=<span class="c-string">"headings"</span>)
 
-<span class="c-comment"># --- Definición de Cabeceras ---</span>
 arbol.<span class="c-func">heading</span>(<span class="c-string">"dninie"</span>, text=<span class="c-string">"DNI del cliente"</span>)
 arbol.<span class="c-func">heading</span>(<span class="c-string">"nombre"</span>, text=<span class="c-string">"Nombre del cliente"</span>)
 arbol.<span class="c-func">heading</span>(<span class="c-string">"apellidos"</span>, text=<span class="c-string">"Apellidos del cliente"</span>)
 arbol.<span class="c-func">heading</span>(<span class="c-string">"email"</span>, text=<span class="c-string">"Email del cliente"</span>)
 
-<span class="c-comment"># --- Consulta SQL y Llenado de Tabla ---</span>
 cursor.<span class="c-func">execute</span>(<span class="c-string">'''SELECT * FROM clientes;'''</span>)
 filas = cursor.<span class="c-func">fetchall</span>()
 
 <span class="c-keyword">for</span> fila <span class="c-keyword">in</span> filas:
-    <span class="c-comment"># Insertamos los datos recuperados en el árbol</span>
     arbol.<span class="c-func">insert</span>(<span class="c-string">""</span>, <span class="c-string">"end"</span>, values=(fila[<span class="c-number">1</span>], fila[<span class="c-number">2</span>], fila[<span class="c-number">3</span>], fila[<span class="c-number">4</span>]))
 
-arbol.<span class="c-func">pack</span>(padx=<span class="c-number">20</span>,pady=<span class="c-number">20</span>)
+arbol.<span class="c-func">pack</span>(padx=<span class="c-number">20</span>, pady=<span class="c-number">20</span>)
 
-<span class="c-comment"># --- Bucle Principal ---</span>
 ventana.<span class="c-func">mainloop</span>()
-</code></pre>
+                </code></pre>
             </div>
         </div>
 
     </div>
 
+    <div id="ventana-tkinter">
+        <div class="tk-header">
+            <span>tk # Visor de Clientes SQL</span>
+            <button class="tk-close" onclick="cerrarVisor()">X</button>
+        </div>
+        <div class="tk-body">
+            <div style="margin-bottom: 15px; font-size: 0.8rem; color: #555;">
+                <strong>Estado:</strong> Conectado a base de datos MySQL <code>'empresadam'</code>
+            </div>
+
+            <div class="treeview-container">
+                <table class="tk-table">
+                    <thead>
+                        <tr>
+                            <th>DNI del cliente</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tk-data-rows">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="cerrarVisor()"></div>
+
     <footer>
         © 2026 Dominique Farias
     </footer>
+
+    <script>
+        // Datos de ejemplo simulando el fetchall() de MySQL
+        const dataSet = [
+            ["12345678A", "Dominique", "Farias Osorio", "domi.farias@ceac.es"],
+            ["11223344C", "Alex", "Garcia Martinez", "alex.garcia@gmail.com"],
+            ["55667788D", "Maria", "Lopez Pardo", "m.lopez@outlook.com"]
+        ];
+
+        function abrirVisor() {
+            const ventana = document.getElementById('ventana-tkinter');
+            const overlay = document.getElementById('overlay');
+            const tabla = document.getElementById('tk-data-rows');
+
+            // Limpiar tabla
+            tabla.innerHTML = "";
+
+            // Mostrar elementos
+            ventana.style.display = 'block';
+            overlay.style.display = 'block';
+
+            // Simular el insert de filas una a una
+            dataSet.forEach((fila, i) => {
+                setTimeout(() => {
+                    const tr = document.createElement('tr');
+                    tr.className = "row-anim";
+                    tr.innerHTML = `
+                        <td>${fila[0]}</td>
+                        <td>${fila[1]}</td>
+                        <td>${fila[2]}</td>
+                        <td>${fila[3]}</td>
+                    `;
+                    tabla.appendChild(tr);
+                }, i * 250);
+            });
+        }
+
+        function cerrarVisor() {
+            document.getElementById('ventana-tkinter').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

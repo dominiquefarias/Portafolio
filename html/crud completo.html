@@ -32,28 +32,20 @@
     <div class="project-container">
 
         <div class="project-info">
-
             <h3>Lógica del Proyecto</h3>
-            <p>
-                Este sistema implementa una agenda completa con persistencia de datos mediante <strong>SQLite</strong>.
-                Permite administrar una base de datos de clientes realizando operaciones CRUD (Crear, Leer, Actualizar y
-                Eliminar)
-                directamente desde la consola.
-            </p>
-            <p>
-                Utiliza un menú interactivo infinito que permite al usuario gestionar los registros de la tabla
-                <code>clientes</code> de forma dinámica y segura.
+            <p>Este sistema implementa una agenda completa con persistencia de datos mediante <strong>SQLite</strong>.
+                Permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) directamente desde la consola.
             </p>
 
             <h3>Características Técnicas</h3>
             <ul class="features">
-                <li>Conexión a Base de Datos con <code>sqlite3</code>.</li>
-                <li>Consultas SQL parametrizadas para evitar inyecciones.</li>
+                <li>Conexión a BBDD con <code>sqlite3</code>.</li>
                 <li>Manejo de flujo con <code>while True</code>.</li>
                 <li>Operaciones SQL: <code>INSERT</code>, <code>SELECT</code>, <code>UPDATE</code>, <code>DELETE</code>.
                 </li>
-                <li>Persistencia de cambios mediante <code>commit()</code>.</li>
             </ul>
+
+            <button class="run-btn" onclick="iniciarAgenda()">▶ EJECUTAR GESTOR INTERACTIVO</button>
         </div>
 
         <div class="code-window">
@@ -70,43 +62,34 @@
                 <pre><code>
 <span class="c-keyword">import</span> sqlite3
 
-<span class="c-comment"># --- Conexión a la BBDD ---</span>
 conexion = sqlite3.connect(<span class="c-string">"empresa.db"</span>)
 cursor = conexion.cursor()
 
 <span class="c-func">print</span>(<span class="c-string">"Programa agenda SQLite Dominique Farias"</span>)
-
-<span class="c-comment"># --- Bucle del Menú Principal ---</span>
 <span class="c-keyword">while</span> <span class="c-keyword">True</span>:
     <span class="c-func">print</span>(<span class="c-string">"Escoge una opción:\n1.-Crear cliente\n2.-Listar clientes\n3.-Actualizar clientes\n4.-Eliminar clientes\n5.-Salir del programa"</span>)
-    
     opcion = <span class="c-func">int</span>(<span class="c-func">input</span>(<span class="c-string">"Selecciona una opcion: "</span>))
     
-    <span class="c-comment"># 1. Crear Cliente</span>
     <span class="c-keyword">if</span> opcion == <span class="c-number">1</span>:
         nombre = <span class="c-func">input</span>(<span class="c-string">"Introduce el nombre del cliente:"</span>)
         apellidos = <span class="c-func">input</span>(<span class="c-string">"Introduce los apellidos del cliente:"</span>)
         email = <span class="c-func">input</span>(<span class="c-string">"Introduce el email del cliente: "</span>)
-        
         cursor.execute(<span class="c-string">"""
             INSERT INTO clientes (nombre, apellidos, email) VALUES (?, ?, ?);
         """</span>, (nombre, apellidos, email))
         conexion.commit()
         
-    <span class="c-comment"># 2. Listar Clientes</span>
     <span class="c-keyword">elif</span> opcion == <span class="c-number">2</span>:
         cursor.execute(<span class="c-string">'SELECT * FROM clientes;'</span>)
         filas = cursor.fetchall()
         <span class="c-keyword">for</span> fila <span class="c-keyword">in</span> filas:
             <span class="c-func">print</span>(fila)
 
-    <span class="c-comment"># 3. Actualizar Cliente</span>
     <span class="c-keyword">elif</span> opcion == <span class="c-number">3</span>:
         identificador = <span class="c-func">input</span>(<span class="c-string">"Introduce el identificador a actualizar:"</span>)
         nombre = <span class="c-func">input</span>(<span class="c-string">"Introduce el nombre del nuevo cliente:"</span>)
         apellidos = <span class="c-func">input</span>(<span class="c-string">"Introduce los apellidos del nuevo cliente:"</span>)
         email = <span class="c-func">input</span>(<span class="c-string">"Introduce el email del nuevo cliente: "</span>)
-        
         cursor.execute(<span class="c-string">"""
             UPDATE clientes SET
             nombre = ?,
@@ -116,7 +99,6 @@ cursor = conexion.cursor()
         """</span>, (nombre, apellidos, email, identificador))
         conexion.commit()
             
-    <span class="c-comment"># 4. Eliminar Cliente</span>
     <span class="c-keyword">elif</span> opcion == <span class="c-number">4</span>:
         identificador = <span class="c-func">input</span>(<span class="c-string">"Introduce el identificador a eliminar: "</span>)
         cursor.execute(<span class="c-string">"""
@@ -124,11 +106,23 @@ cursor = conexion.cursor()
         """</span>, (identificador,))
         conexion.commit()
 
-    <span class="c-comment"># 5. Salir</span>
     <span class="c-keyword">elif</span> opcion == <span class="c-number">5</span>:
         <span class="c-func">print</span>(<span class="c-string">"byebye"</span>)
         <span class="c-func">exit</span>()
-</code></pre>
+                </code></pre>
+            </div>
+        </div>
+
+        <div id="terminal-agenda">
+            <div class="terminal-header">
+                <span>Terminal - agenda_sqlite.py</span>
+                <span id="db-status">● SQLite Conectado</span>
+            </div>
+            <div class="terminal-body" id="terminal-content">
+                <div id="input-line" class="input-area">
+                    <span class="prompt">➜</span>
+                    <input type="text" id="user-input" autocomplete="off" placeholder="Escribe aquí...">
+                </div>
             </div>
         </div>
 
@@ -137,6 +131,131 @@ cursor = conexion.cursor()
     <footer>
         © 2025 Dominique Farias
     </footer>
+
+    <script>
+        const terminalContent = document.getElementById('terminal-content');
+        const terminalDiv = document.getElementById('terminal-agenda');
+        const inputField = document.getElementById('user-input');
+        const inputLine = document.getElementById('input-line');
+
+        // Base de Datos Simulada
+        let db = [
+            { id: 1, nombre: "Dominique", apellidos: "Farias", email: "domi@ceac.es" }
+        ];
+        let nextId = 2;
+
+        // Máquina de Estados
+        let estado = "MENU";
+        let temp = {};
+
+        function iniciarAgenda() {
+            terminalDiv.style.display = 'block';
+            limpiarTerminal();
+            printMsg("Programa agenda SQLite Dominique Farias");
+            mostrarMenu();
+            inputField.focus();
+            terminalDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function mostrarMenu() {
+            printMsg("\nEscoge una opción:\n1.-Crear cliente\n2.-Listar clientes\n3.-Actualizar clientes\n4.-Eliminar clientes\n5.-Salir del programa");
+            estado = "MENU";
+        }
+
+        inputField.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && inputField.value.trim() !== "") {
+                let val = inputField.value.trim();
+                printMsg(val, "user");
+                inputField.value = "";
+                gestionarCRUD(val);
+            }
+        });
+
+        async function gestionarCRUD(val) {
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+
+            if (estado === "MENU") {
+                switch (val) {
+                    case "1":
+                        printMsg("Introduce el nombre del cliente:");
+                        estado = "C_NOM"; break;
+                    case "2":
+                        listar(); break;
+                    case "3":
+                        printMsg("Introduce el ID a actualizar:");
+                        estado = "U_ID"; break;
+                    case "4":
+                        printMsg("Introduce el ID a eliminar:");
+                        estado = "D_ID"; break;
+                    case "5":
+                        printMsg("byebye");
+                        await delay(800);
+                        terminalDiv.style.display = 'none';
+                        break;
+                    default:
+                        printMsg("Opción no válida", "error");
+                        mostrarMenu();
+                }
+            }
+            // Lógica de Creación (INSERT)
+            else if (estado === "C_NOM") { temp.n = val; printMsg("Apellidos:"); estado = "C_APE"; }
+            else if (estado === "C_APE") { temp.a = val; printMsg("Email:"); estado = "C_EM"; }
+            else if (estado === "C_EM") {
+                printMsg("INSERT INTO clientes VALUES (?, ?, ?)...", "sql");
+                await delay(500);
+                db.push({ id: nextId++, nombre: temp.n, apellidos: temp.a, email: val });
+                printMsg("✔ Cliente creado correctamente.", "success");
+                mostrarMenu();
+            }
+            // Lógica de Borrado (DELETE)
+            else if (estado === "D_ID") {
+                let id = parseInt(val);
+                printMsg(`DELETE FROM clientes WHERE id = ${id}...`, "sql");
+                await delay(500);
+                let len = db.length;
+                db = db.filter(c => c.id !== id);
+                if (db.length < len) printMsg("✔ Registro eliminado.", "success");
+                else printMsg("ID no encontrado.", "error");
+                mostrarMenu();
+            }
+            // Lógica de Actualización (UPDATE)
+            else if (estado === "U_ID") { temp.id = parseInt(val); printMsg("Nuevo nombre:"); estado = "U_NOM"; }
+            else if (estado === "U_NOM") { temp.n = val; printMsg("Nuevos apellidos:"); estado = "U_APE"; }
+            else if (estado === "U_APE") { temp.a = val; printMsg("Nuevo email:"); estado = "U_EM"; }
+            else if (estado === "U_EM") {
+                let c = db.find(x => x.id === temp.id);
+                if (c) {
+                    c.nombre = temp.n; c.apellidos = temp.a; c.email = val;
+                    printMsg("✔ UPDATE completado.", "success");
+                } else printMsg("ID no encontrado.", "error");
+                mostrarMenu();
+            }
+        }
+
+        function listar() {
+            printMsg("SELECT * FROM clientes;", "sql");
+            if (db.length === 0) printMsg("La base de datos está vacía.");
+            db.forEach(c => printMsg(`(${c.id}, '${c.nombre}', '${c.apellidos}', '${c.email}')`));
+            mostrarMenu();
+        }
+
+        function printMsg(txt, type = "sys") {
+            let div = document.createElement('div');
+            if (type === "user") div.innerHTML = `<span class="prompt">➜</span> <span style="color: #ffbd2e;">${txt}</span>`;
+            else if (type === "sql") div.className = "sql-log";
+            else if (type === "error") div.className = "error-msg";
+            else if (type === "success") div.className = "success-msg";
+            div.innerText = (type === "user") ? div.innerText : txt;
+            if (type === "user") div.innerHTML = `<span class="prompt">➜</span> <span style="color: #ffbd2e;">${txt}</span>`;
+
+            terminalContent.insertBefore(div, inputLine);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        function limpiarTerminal() {
+            terminalContent.querySelectorAll('div:not(#input-line)').forEach(d => d.remove());
+        }
+    </script>
 </body>
 
 </html>

@@ -1,21 +1,26 @@
 /* ---------------------------------------------------- */
 /* --- Variables de Diseño (Tema Tierra y Naturaleza, basado en la imagen de Dragones) --- */
 :root {
-    /* Colores principales basados en la paleta del pergamino y los dragones */
-    --bg-body: #F0E5D3;
-    /* Fondo Pergamino claro */
-    --primary-color: #A87C62;
-    /* Marrón Terracota (Dragón B) - Principal para botones/acentos */
-    --primary-dark: #3A2C22;
-    /* Marrón Oscuro (Texto/Contornos) - Para textos y títulos */
-    --accent-color: #8DC36E;
-    /* Verde (Dragón A) - Acento fresco */
-    --white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --shadow-soft: 0 10px 40px rgba(58, 44, 34, 0.1);
-    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
-    --gradient-main: linear-gradient(135deg, #A87C62 0%, #8DC36E 100%);
-    /* Degradado Marrón a Verde */
+    /* Colores principales basados en la nueva paleta oscura y púrpura (Versión Extra Suave) */
+    --bg-body: #1F1D2B;
+    /* Fondo Principal: Negro púrpura más claro */
+    --primary-color: #A78BFA;
+    /* Color de Acento: Púrpura pastel */
+    --primary-dark: #FFFFFF;
+    /* Texto Principal: Blanco puro */
+    --accent-color: #A78BFA;
+    /* Acento (Botón) */
+    --white: #2D2B3D;
+    /* Fondo de la Tarjeta: Púrpura profundo suavizado */
+    --glass-bg: rgba(45, 43, 61, 0.9);
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --gradient-main: linear-gradient(135deg, #A78BFA 0%, #C4B5FD 100%);
+    /* Degradado Púrpura Pastel */
+    --text-secundary: #B1BDD0;
+    /* Texto Secundario: Gris azulado claro */
+    --border-color: #3E3B52;
+    /* Bordes e Inputs: Púrpura ceniza ligero */
 }
 
 /* --- Reset Básico --- */
@@ -71,9 +76,9 @@ nav {
 /* --- Header / Hero Section --- */
 header {
     background: var(--bg-body);
-    /* Fondo con patrón sutil de los colores primarios */
-    background-image: radial-gradient(circle at 10% 20%, rgba(141, 195, 110, 0.4) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(168, 124, 98, 0.4) 0%, transparent 20%);
+    /* Fondo con patrón sutil */
+    background-image: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(216, 180, 254, 0.15) 0%, transparent 20%);
     text-align: center;
     padding: 80px 20px 60px;
 }
@@ -93,8 +98,8 @@ header h2 {
     margin-top: 10px;
     font-size: 1.2rem;
     font-weight: 300;
-    color: #6d6d6d;
-    /* Tono neutro para subtítulo */
+    color: var(--text-secundary);
+    /* Tono gris azulado para subtítulo */
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -108,14 +113,14 @@ header h2 {
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(168, 124, 98, 0.4);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
     transition: all 0.3s ease;
 }
 
 .btn-contact:hover {
-    background: var(--primary-dark);
+    background: #7c3aed;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(58, 44, 34, 0.6);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.6);
 }
 
 /* --- Sección Principal (Grid) --- */
@@ -144,7 +149,7 @@ main {
     margin: 10px auto 0;
     border-radius: 3px;
     /* Borde más suave */
-    box-shadow: 0 0 10px rgba(168, 124, 98, 0.5);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
     /* Sombra para que destaque */
 }
 
@@ -161,7 +166,7 @@ article {
     overflow: hidden;
     box-shadow: var(--shadow-card);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
 }
@@ -204,7 +209,7 @@ article h3 {
 
 article p {
     margin: 0 0 20px;
-    color: #666;
+    color: var(--text-secundary);
     font-size: 0.95rem;
     flex-grow: 1;
 }
@@ -225,21 +230,21 @@ article p {
 }
 
 .btn-project:hover {
-    background: var(--accent-color);
-    /* Fondo verde al pasar el ratón */
-    color: var(--white);
+    background: var(--primary-color);
+    /* Fondo púrpura al pasar el ratón */
+    color: #FFFFFF;
 }
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(to top, #E8D5B7, white);
-    /* Degradado suave del color del pergamino */
-    color: var(--primary-dark);
+    background: linear-gradient(to top, #2D2B3D, #1F1D2B);
+    /* Degradado púrpura suave */
+    color: var(--text-secundary);
     font-size: 0.9rem;
     margin-top: 60px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
 }
 
 /* --- Responsive --- */

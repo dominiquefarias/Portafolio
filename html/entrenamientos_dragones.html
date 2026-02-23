@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/entrenamientos_dragones.css">
+</head>
 
 <body>
 
@@ -31,18 +32,10 @@
     <div class="project-container">
 
         <div class="project-info">
-
             <h3>Lógica del Proyecto</h3>
-            <p>
-                Este programa interactivo permite la gestión de dos entidades (Dragones A y B). Solicita datos
-                al
-                usuario, realiza conversiones de tipo con manejo de excepciones y clasifica a las criaturas según su
-                edad.
-            </p>
-            <p>
-                Finalmente, ejecuta un bucle de entrenamiento donde las estadísticas aumentan de forma dinámica
-                basándose en la clasificación vital (Joven, Adulto, Anciano).
-            </p>
+            <p>Este programa interactivo permite la gestión de dos entidades (Dragones A y B). Solicita datos al
+                usuario, realiza validaciones y ejecuta un bucle de entrenamiento dinámico.
+                (Codigo hecho a principios de curso)</p>
 
             <h3>Características Técnicas</h3>
             <ul class="features">
@@ -50,8 +43,11 @@
                 <li>Manejo de errores con bloques <code>try-except</code>.</li>
                 <li>Lógica condicional <code>if-elif-else</code>.</li>
                 <li>Ciclos <code>for</code> para simulación temporal.</li>
-                <li>Operadores de asignación compuesta <code>+=</code>.</li>
             </ul>
+
+            <div style="margin-top: 20px;">
+                <button class="run-btn" onclick="iniciarSimulador()">▶ EJECUTAR SIMULADOR</button>
+            </div>
         </div>
 
         <div class="code-window">
@@ -72,7 +68,6 @@ edad_dragon_a = <span class="c-func">input</span>(<span class="c-string">"Dime l
 clasificacion_dragon_a = <span class="c-string">""</span>
 Fuerza_dragon_a = <span class="c-number">0</span>
 resistencia_dragon_a = <span class="c-number">0</span>
-
 <span class="c-func">print</span>(<span class="c-string">"El nombre del dragon A es:"</span>, nombre_dragon_a)
 <span class="c-func">print</span>(<span class="c-string">"La edad del dragon A es:"</span>, edad_dragon_a)
 
@@ -82,11 +77,9 @@ edad_dragon_b = <span class="c-func">input</span>(<span class="c-string">"Dime l
 clasificacion_dragon_b = <span class="c-string">""</span>
 Fuerza_dragon_b = <span class="c-number">0</span>
 resistencia_dragon_b = <span class="c-number">0</span>
-
 <span class="c-func">print</span>(<span class="c-string">"El nombre del dragon B es:"</span>, nombre_dragon_b)
 <span class="c-func">print</span>(<span class="c-string">"La edad del dragon B es:"</span>, edad_dragon_b)
 
-<span class="c-comment"># --- Validación de Edades (Manejo de Excepciones) ---</span>
 <span class="c-keyword">try</span>:
     edad_dragon_a = <span class="c-func">int</span>(edad_dragon_a)
     <span class="c-func">print</span>(<span class="c-string">"He convertido la edad correctamente"</span>)
@@ -101,23 +94,23 @@ resistencia_dragon_b = <span class="c-number">0</span>
     edad_dragon_b = <span class="c-number">100</span>
     <span class="c-func">print</span>(<span class="c-string">"No he convertido la edad correctamente"</span>)
 
-<span class="c-comment"># --- Clasificación Condicional (if-elif-else) ---</span>
-<span class="c-keyword">if</span> edad_dragon_a < <span class="c-number">50</span>:
+<span class="c-comment"># --- Clasificación ---</span>
+<span class="c-keyword">if</span> edad_dragon_a &lt; <span class="c-number">50</span>:
     clasificacion_dragon_a = <span class="c-string">"joven"</span>
-<span class="c-keyword">elif</span> edad_dragon_a >= <span class="c-number">50</span> <span class="c-keyword">and</span> edad_dragon_a <= <span class="c-number">199</span>:
+<span class="c-keyword">elif</span> edad_dragon_a &gt;= <span class="c-number">50</span> <span class="c-keyword">and</span> edad_dragon_a &lt;= <span class="c-number">199</span>:
     clasificacion_dragon_a = <span class="c-string">"adulto"</span>
-<span class="c-keyword">elif</span> edad_dragon_a >= <span class="c-number">200</span>:
+<span class="c-keyword">elif</span> edad_dragon_a &gt;= <span class="c-number">200</span>:
     clasificacion_dragon_a = <span class="c-string">"anciano"</span>
     
-<span class="c-keyword">if</span> edad_dragon_b < <span class="c-number">50</span>:
+<span class="c-keyword">if</span> edad_dragon_b &lt; <span class="c-number">50</span>:
     clasificacion_dragon_b = <span class="c-string">"joven"</span>
-<span class="c-keyword">elif</span> edad_dragon_b >= <span class="c-number">50</span> <span class="c-keyword">and</span> edad_dragon_b <= <span class="c-number">199</span>:
+<span class="c-keyword">elif</span> edad_dragon_b &gt;= <span class="c-number">50</span> <span class="c-keyword">and</span> edad_dragon_b &lt;= <span class="c-number">199</span>:
     clasificacion_dragon_b = <span class="c-string">"adulto"</span>
-<span class="c-keyword">elif</span> edad_dragon_b >= <span class="c-number">200</span>:
+<span class="c-keyword">elif</span> edad_dragon_b &gt;= <span class="c-number">200</span>:
     clasificacion_dragon_b = <span class="c-string">"anciano"</span>
 
-<span class="c-comment"># --- Bucle de Entrenamiento (for loop) ---</span>
-<span class="c-keyword">for</span> dia <span class="c-keyword">in</span> <span class="c-func">range</span> (<span class="c-number">1</span>,<span class="c-number">4</span>):
+<span class="c-comment"># --- Entrenamiento ---</span>
+<span class="c-keyword">for</span> dia <span class="c-keyword">in</span> <span class="c-func">range</span>(<span class="c-number">1</span>, <span class="c-number">4</span>):
     <span class="c-keyword">if</span> clasificacion_dragon_a == <span class="c-string">"joven"</span>:
         Fuerza_dragon_a += <span class="c-number">2</span>
         resistencia_dragon_a += <span class="c-number">2</span>
@@ -127,9 +120,24 @@ resistencia_dragon_b = <span class="c-number">0</span>
     <span class="c-keyword">else</span>:
         Fuerza_dragon_a += <span class="c-number">1</span>
         resistencia_dragon_a += <span class="c-number">1</span>
+                </code></pre>
+            </div>
+        </div>
 
-    <span class="c-func">print</span>(f<span class="c-string">"Día {dia}: Entrenamiento completado"</span>)
-</code></pre>
+        <div id="terminal-simulador">
+            <div class="terminal-header">
+                <span style="font-size: 0.75rem; color: #8c1bd1;">CONSOLE EXECUTOR</span>
+                <div class="dots">
+                    <span class="dot red" style="width: 8px; height: 8px;"></span>
+                    <span class="dot yellow" style="width: 8px; height: 8px;"></span>
+                    <span class="dot green" style="width: 8px; height: 8px;"></span>
+                </div>
+            </div>
+            <div class="terminal-body" id="terminal-content">
+                <div id="input-line-container" style="display: flex;">
+                    <span class="prompt">➜</span>
+                    <input type="text" id="user-input" autocomplete="off">
+                </div>
             </div>
         </div>
 
@@ -138,6 +146,140 @@ resistencia_dragon_b = <span class="c-number">0</span>
     <footer>
         © 2025 Dominique Farias
     </footer>
+
+    <script>
+        const terminalDiv = document.getElementById('terminal-simulador');
+        const terminalContent = document.getElementById('terminal-content');
+        const inputField = document.getElementById('user-input');
+        const inputLine = document.getElementById('input-line-container');
+
+        let paso = 0;
+        let dragonA = { nombre: "", edad: 0, fuerza: 0, resistencia: 0, tipo: "" };
+        let dragonB = { nombre: "", edad: 0, fuerza: 0, resistencia: 0, tipo: "" };
+
+        function iniciarSimulador() {
+            terminalDiv.style.display = 'block';
+            limpiarTerminal();
+            printMsg("--- Simulador de Dragones v1.0 ---");
+            printMsg("Dime el nombre del dragon A:");
+            paso = 1;
+            inputField.focus();
+            terminalDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        inputField.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && inputField.value.trim() !== "") {
+                let valor = inputField.value;
+                printMsg(valor, "user");
+                inputField.value = "";
+                procesarEntrada(valor);
+            }
+        });
+
+        async function procesarEntrada(valor) {
+            switch (paso) {
+                case 1:
+                    dragonA.nombre = valor;
+                    printMsg("Dime la edad del dragon A:");
+                    paso = 2;
+                    break;
+                case 2:
+                    dragonA.edad = valor;
+                    printMsg("Dime el nombre del dragon B:");
+                    paso = 3;
+                    break;
+                case 3:
+                    dragonB.nombre = valor;
+                    printMsg("Dime la edad del dragon B:");
+                    paso = 4;
+                    break;
+                case 4:
+                    dragonB.edad = valor;
+                    inputLine.style.display = 'none'; // Bloquear entrada
+                    await ejecutarSimulacion();
+                    break;
+            }
+        }
+
+        async function ejecutarSimulacion() {
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+
+            printMsg(`Iniciando registros de ${dragonA.nombre} y ${dragonB.nombre}...`);
+            await delay(800);
+
+            // Simulación de try-except
+            let edadA = parseInt(dragonA.edad);
+            if (isNaN(edadA)) {
+                dragonA.edad = 100;
+                printMsg("Error: Edad A no válida. Asignando 100 por defecto.", "error");
+            } else {
+                dragonA.edad = edadA;
+                printMsg("Edad A procesada correctamente.");
+            }
+
+            let edadB = parseInt(dragonB.edad);
+            if (isNaN(edadB)) {
+                dragonB.edad = 100;
+                printMsg("Error: Edad B no válida. Asignando 100 por defecto.", "error");
+            } else {
+                dragonB.edad = edadB;
+                printMsg("Edad B procesada correctamente.");
+            }
+
+            // Clasificación
+            dragonA.tipo = dragonA.edad < 50 ? "joven" : (dragonA.edad < 200 ? "adulto" : "anciano");
+            dragonB.tipo = dragonB.edad < 50 ? "joven" : (dragonB.edad < 200 ? "adulto" : "anciano");
+
+            printMsg(`${dragonA.nombre} es un dragón ${dragonA.tipo}.`);
+            printMsg(`${dragonB.nombre} es un dragón ${dragonB.tipo}.`);
+
+            await delay(1000);
+            printMsg("--- Iniciando Entrenamiento (3 Días) ---");
+
+            for (let dia = 1; dia <= 3; dia++) {
+                await delay(600);
+                // Lógica de puntos
+                let puntosA = dragonA.tipo === "joven" ? 2 : 1;
+                let puntosB = dragonB.tipo === "joven" ? 2 : 1;
+
+                dragonA.fuerza += puntosA;
+                dragonA.resistencia += puntosA;
+                dragonB.fuerza += puntosB;
+                dragonB.resistencia += puntosB;
+
+                printMsg(`Día ${dia}: Entrenamiento completado. (+${puntosA} estats)`);
+            }
+
+            await delay(800);
+            printMsg("---------------------------------");
+            printMsg(`RESULTADO FINAL:`);
+            printMsg(`${dragonA.nombre}: Fuerza ${dragonA.fuerza}, Resistencia ${dragonA.resistencia}`);
+            printMsg(`${dragonB.nombre}: Fuerza ${dragonB.fuerza}, Resistencia ${dragonB.resistencia}`);
+            printMsg("---------------------------------");
+
+            // Reinicio
+            await delay(2000);
+            printMsg("¿Quieres volver a probar? Pulsa EJECUTAR de nuevo.");
+            inputLine.style.display = 'flex';
+            paso = 0;
+        }
+
+        function printMsg(txt, type = "sys") {
+            let div = document.createElement('div');
+            div.className = 'log-line';
+            if (type === "user") div.innerHTML = `<span style="color: #ffbd2e;">➜ ${txt}</span>`;
+            else if (type === "error") div.style.color = "#ff5f56";
+            else div.innerText = txt;
+            terminalContent.insertBefore(div, inputLine);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        function limpiarTerminal() {
+            const logs = terminalContent.querySelectorAll('.log-line');
+            logs.forEach(l => l.remove());
+            inputLine.style.display = 'flex';
+        }
+    </script>
 </body>
 
 </html>
