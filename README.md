@@ -49,4 +49,4 @@ Este repositorio combina tecnologías web para la presentación y tecnologías d
 * **Ubicación:** España
 
 ---
-© 2025 Dominique Farías Osorio
+© 2026 Dominique Farías Osorio
