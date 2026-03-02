@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dominique Farías — Biblioteca Personal</title>
+    <link rel="icon" href="../img/favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/biblioteca_personal.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="../index.html" class="nav-left">
+            <img src="../img/favicon1.png" alt="Logo" class="nav-logo">
+        </a>
+        <a href="../index.html" class="btn-back">← Volver al Inicio</a>
+    </nav>
+
+    <header>
+        <span class="project-tag">PHP & MySQL</span>
+        <h1>Biblioteca Personal</h1>
+    </header>
+
+    <main class="project-container">
+        <section>
+            <h2 class="section-title">Descripción del Proyecto</h2>
+            <p>
+                Este proyecto es una solución integral para amantes de la lectura que desean digitalizar su colección
+                física. Permite un control exhaustivo de cada obra, desde la ficha técnica (ISBN, Editorial, Páginas)
+                hasta el seguimiento emocional y logístico de la lectura.
+            </p>
+
+            <div class="status-container">
+                <span class="badge-status status-desired">🟡 DESEADO (Control de Precios)</span>
+                <span class="badge-status status-reading">🔵 LEYENDO (Capítulo Actual)</span>
+                <span class="badge-status status-read">🟣 LEÍDO (Valoración ★)</span>
+            </div>
+        </section>
+
+        <div class="feature-grid">
+            <div class="info-box">
+                <h3><i data-lucide="layers" style="vertical-align: middle;"></i> Funcionalidades</h3>
+                <ul>
+                    <li><strong>Gestión Dinámica:</strong> Formulario que adapta sus campos según el estado del libro.
+                    </li>
+                    <li><strong>Portadas Reales:</strong> Sistema de subida de imágenes al servidor local.</li>
+                    <li><strong>Panel de Admin:</strong> Acceso restringido (ID 2) para visualización total de tablas
+                        SQL.</li>
+                    <li><strong>Auto-Migración:</strong> Script en <code>config.php</code> que asegura la integridad de
+                        la BD automáticamente.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3><i data-lucide="cpu" style="vertical-align: middle;"></i> Tecnologías</h3>
+                <div class="tech-badges">
+                    <span>PHP 7.4+</span>
+                    <span>MySQLi</span>
+                    <span>Tailwind CSS</span>
+                    <span>JavaScript</span>
+                    <span>Google Fonts</span>
+                </div>
+                <p style="font-size: 0.85rem; font-style: italic; margin-top: 15px;">
+                    Desarrollado bajo entorno Linux Ubuntu con arquitectura cliente-servidor.
+                </p>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title">Estructura del Código</h2>
+            <div class="folder-structure">
+                rutsaisan-proyecto-biblioteca-personal/<br>
+                └── Biblioteca/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── 📁 assets/css/estilo.css<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── 📁 database/db.sql<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── 📁 includes/config.php (Conexión + Auto-migración)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── 📁 php/ (login.php, logout.php, register.php)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── admin_panel.php (Gestión de tablas)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;├── feed.php (Dashboard visual)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└── nuevo_libro.php (Lógica CRUD)
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Capturas del Sistema</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/crearcuenta.png" alt="Login">
+                    <p>Crear cuenta</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/login.png" alt="Feed">
+                    <p>Login</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/dashboard.png" alt="Admin">
+                    <p>Dashboard</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/feed.png" alt="Login">
+                    <p>Feed</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/desplegable.png" alt="Feed">
+                    <p>Desplegable</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/nuevolibro1.png" alt="Admin">
+                    <p>Nuevo libro</p>
+                </div>
+                <div class="media-item">
+                    <img src="../img/capturas de pantallas/biblioteca_personal/nuevolibro2.png" alt="Admin">
+                    <p>Nuevo libro</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="btn-container">
+            <a href="https://github.com/rutsaisan/Proyecto-Biblioteca-Personal" target="_blank" class="btn-primary">
+                <i data-lucide="github"></i> Repositorio de GitHub
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Dominique Farias
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
