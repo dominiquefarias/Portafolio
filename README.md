@@ -1,4 +1,4 @@
-# <p align="center">✨ 🪐 Portafolio Profesional 🪐 ✨</p>
+# <p align="center">✨ 🪐 Portafolio 🪐 ✨</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/greetings.gif" width="150px">
