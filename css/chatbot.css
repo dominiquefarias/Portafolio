@@ -1,0 +1,40 @@
+/* Overrides para aplicar tus colores lila/pastel manteniendo tu estructura */
+:root {
+    --accent-color: #b39ddb;
+    /* Lila pastel */
+    --dark-accent: #7e57c2;
+    /* Morado más intenso */
+    --soft-bg: #f3e5f5;
+    /* Fondo muy suave */
+}
+
+.project-tag {
+    background-color: var(--soft-bg);
+    color: var(--dark-accent);
+}
+
+h1,
+.section-title,
+.info-box h3 {
+    color: var(--dark-accent);
+}
+
+.info-box {
+    border-top: 4px solid var(--accent-color);
+}
+
+.btn-primary {
+    background-color: var(--dark-accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+}
+
+/* Estilo para el capsule-render que pediste */
+.github-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
