@@ -1,29 +1,17 @@
-/* ---------------------------------------------------- */
-/* --- Variables de Diseño (Tema Tierra y Naturaleza, basado en la imagen de Dragones) --- */
 :root {
-    /* Colores principales basados en la nueva paleta oscura y púrpura (Versión Extra Suave) */
     --bg-body: #1F1D2B;
-    /* Fondo Principal: Negro púrpura más claro */
     --primary-color: #A78BFA;
-    /* Color de Acento: Púrpura pastel */
     --primary-dark: #FFFFFF;
-    /* Texto Principal: Blanco puro */
     --accent-color: #A78BFA;
-    /* Acento (Botón) */
     --white: #2D2B3D;
-    /* Fondo de la Tarjeta: Púrpura profundo suavizado */
     --glass-bg: rgba(45, 43, 61, 0.9);
     --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
     --gradient-main: linear-gradient(135deg, #A78BFA 0%, #C4B5FD 100%);
-    /* Degradado Púrpura Pastel */
     --text-secundary: #B1BDD0;
-    /* Texto Secundario: Gris azulado claro */
     --border-color: #3E3B52;
-    /* Bordes e Inputs: Púrpura ceniza ligero */
 }
 
-/* --- Reset Básico --- */
 * {
     box-sizing: border-box;
 }
@@ -31,13 +19,11 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    /* Tipografía profesional */
     background-color: var(--bg-body);
     color: var(--primary-dark);
     line-height: 1.6;
 }
 
-/* --- Barra de Navegación --- */
 nav {
     display: flex;
     align-items: center;
@@ -45,7 +31,6 @@ nav {
     padding: 15px 5%;
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    /* Efecto vidrio */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -73,10 +58,8 @@ nav {
     transform: rotate(10deg);
 }
 
-/* --- Header / Hero Section --- */
 header {
     background: var(--bg-body);
-    /* Fondo con patrón sutil */
     background-image: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(216, 180, 254, 0.15) 0%, transparent 20%);
     text-align: center;
@@ -90,7 +73,6 @@ header h1 {
     background: var(--gradient-main);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    /* Texto degradado */
     letter-spacing: -1px;
 }
 
@@ -99,7 +81,6 @@ header h2 {
     font-size: 1.2rem;
     font-weight: 300;
     color: var(--text-secundary);
-    /* Tono gris azulado para subtítulo */
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -123,7 +104,6 @@ header h2 {
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.6);
 }
 
-/* --- Sección Principal (Grid) --- */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -134,7 +114,9 @@ main {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 40px;
-    color: var(--primary-dark);
+    background: var(--gradient-main);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     position: relative;
 }
 
@@ -142,15 +124,11 @@ main {
     content: '';
     display: block;
     width: 80px;
-    /* Más ancho (de 60px a 80px) */
     height: 6px;
-    /* Más alto (de 4px a 6px) */
     background: var(--gradient-main);
     margin: 10px auto 0;
     border-radius: 3px;
-    /* Borde más suave */
     box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
-    /* Sombra para que destaque */
 }
 
 .projects-grid {
@@ -159,13 +137,12 @@ main {
     gap: 30px;
 }
 
-/* --- Tarjetas de Proyectos --- */
 article {
     background: var(--white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-card);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -173,7 +150,8 @@ article {
 
 article:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.35);
 }
 
 .card-image-container {
@@ -191,7 +169,6 @@ article img {
 
 article:hover img {
     transform: scale(1.05);
-    /* Zoom suave al pasar ratón */
 }
 
 .card-content {
@@ -220,9 +197,7 @@ article p {
     width: 100%;
     text-align: center;
     border: 2px solid var(--accent-color);
-    /* Borde verde */
     color: var(--primary-color);
-    /* Texto marrón */
     text-decoration: none;
     border-radius: 12px;
     font-weight: 600;
@@ -231,23 +206,84 @@ article p {
 
 .btn-project:hover {
     background: var(--primary-color);
-    /* Fondo púrpura al pasar el ratón */
     color: #FFFFFF;
 }
 
-/* --- Footer --- */
 footer {
     text-align: center;
     padding: 40px 20px;
     background: linear-gradient(to top, #2D2B3D, #1F1D2B);
-    /* Degradado púrpura suave */
     color: var(--text-secundary);
     font-size: 0.9rem;
     margin-top: 60px;
     border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-/* --- Responsive --- */
+.footer-name {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+.footer-contact {
+    margin: 0;
+}
+
+.footer-copy {
+    margin: 0;
+    font-size: 0.78rem;
+    opacity: 0.55;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 1px solid rgba(167, 139, 250, 0.45);
+    border-radius: 50px;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    background: rgba(167, 139, 250, 0.05);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+header > * {
+    animation: fadeInUp 0.5s ease both;
+}
+
+header .role-badge   { animation-delay: 0s; }
+header h1            { animation-delay: 0.1s; }
+header h2            { animation-delay: 0.18s; }
+header .btn-contact  { animation-delay: 0.26s; }
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.tag {
+    padding: 3px 11px;
+    background: rgba(167, 139, 250, 0.08);
+    border: 1px solid rgba(167, 139, 250, 0.22);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.5rem;
