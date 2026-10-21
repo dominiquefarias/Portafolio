@@ -4,38 +4,58 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Proyecto — Simulador de Dragones</title>
+    <title>Simulador de Dragones — Dominique Farías</title>
+    <meta name="description" content="Dos dragones se registran, se clasifican por edad y entrenan durante tres días. Puedes ejecutar la simulación aquí mismo.">
     <link rel="icon" href="../img/favicon1.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/entrenamientos_dragones.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css?v=2">
+    <link rel="stylesheet" href="../css/base.css?v=2">
+    <link rel="stylesheet" href="../css/project.css?v=7">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="../js/project.js?v=1" defer></script>
 </head>
 
 <body>
 
-    <nav>
-        <a href="../index.html" class="nav-left">
-            <img src="../img/favicon1.png" alt="Logo" class="nav-logo">
-        </a>
-        <a href="../index.html" class="btn-back">← Volver al Inicio</a>
-    </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-    <header>
-        <span class="project-tag">Python Script</span>
-        <h1>Simulador de Dragones</h1>
+    <nav class="topbar">
+        <a href="../index.html" class="brand">
+            <img src="../img/favicon1.png" alt="" width="36" height="36">
+            <span>Dominique Farías</span>
+        </a>
+        <a href="../index.html#proyectos" class="btn btn-ghost btn-sm">← Todos los proyectos</a>
+    </nav>
+    <header class="project-hero">
+        <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="project-hero-inner">
+            <div class="project-hero-text">
+                <p class="crumbs"><a href="../index.html#proyectos">Proyectos</a><span aria-hidden="true">/</span><span>Simulador de Dragones</span></p>
+                <p class="eyebrow">// Python Script · 1.er curso</p>
+                <h1><span class="text-gradient">Simulador de Dragones</span></h1>
+                <p class="hero-lede">Dos dragones se registran, se clasifican por edad y entrenan durante tres días. Puedes ejecutar la simulación aquí mismo.</p>
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-primary" onclick="iniciarSimulador()">▶ Probar en el navegador</button>
+                    <a href="#codigo" class="btn btn-ghost">Ver código ↓</a>
+                </div>
+            </div>
+            <figure class="hero-visual">
+                <img src="../img/imagenes de proyecto/entrenamiento de dragones.webp" alt="Ilustración del Simulador de Dragones" width="960" height="524">
+            </figure>
+        </div>
     </header>
 
     <div class="project-container">
 
-        <div class="project-info">
+        <div class="project-info reveal">
             <h3>Lógica del Proyecto</h3>
             <p>Este programa interactivo permite la gestión de dos entidades (Dragones A y B). Solicita datos al
                 usuario, realiza validaciones y ejecuta un bucle de entrenamiento dinámico.
-                (Codigo hecho a principios de curso)</p>
+                (Código hecho a principios de curso)</p>
 
             <h3>Características Técnicas</h3>
             <ul class="features">
@@ -50,7 +70,7 @@
             </div>
         </div>
 
-        <div class="code-window">
+        <div class="code-window reveal" id="codigo">
             <div class="window-header">
                 <div class="dots">
                     <span class="dot red"></span>
@@ -61,8 +81,7 @@
             </div>
 
             <div class="code-content">
-                <pre><code>
-<span class="c-comment"># --- Entrada de datos Dragon A ---</span>
+                <pre><code><span class="c-comment"># --- Entrada de datos Dragon A ---</span>
 nombre_dragon_a = <span class="c-func">input</span>(<span class="c-string">"Dime el nombre del dragon A:"</span>)
 edad_dragon_a = <span class="c-func">input</span>(<span class="c-string">"Dime la edad del dragon A:"</span>)
 clasificacion_dragon_a = <span class="c-string">""</span>
@@ -119,32 +138,48 @@ resistencia_dragon_b = <span class="c-number">0</span>
         resistencia_dragon_a += <span class="c-number">1</span>
     <span class="c-keyword">else</span>:
         Fuerza_dragon_a += <span class="c-number">1</span>
-        resistencia_dragon_a += <span class="c-number">1</span>
-                </code></pre>
-            </div>
-        </div>
-
-        <div id="terminal-simulador">
-            <div class="terminal-header">
-                <span style="font-size: 0.75rem; color: #8c1bd1;">CONSOLE EXECUTOR</span>
-                <div class="dots">
-                    <span class="dot red" style="width: 8px; height: 8px;"></span>
-                    <span class="dot yellow" style="width: 8px; height: 8px;"></span>
-                    <span class="dot green" style="width: 8px; height: 8px;"></span>
-                </div>
-            </div>
-            <div class="terminal-body" id="terminal-content">
-                <div id="input-line-container" style="display: flex;">
-                    <span class="prompt">➜</span>
-                    <input type="text" id="user-input" autocomplete="off">
-                </div>
+        resistencia_dragon_a += <span class="c-number">1</span></code></pre>
             </div>
         </div>
 
     </div>
 
-    <footer>
-        © 2025 Dominique Farias
+    <section class="terminal-wrap" aria-label="Terminal interactiva">
+            <div id="terminal-simulador">
+                <div class="terminal-header">
+                    <span class="term-title">CONSOLE EXECUTOR</span>
+                    <div class="dots">
+                        <span class="dot red" style="width: 8px; height: 8px;"></span>
+                        <span class="dot yellow" style="width: 8px; height: 8px;"></span>
+                        <span class="dot green" style="width: 8px; height: 8px;"></span>
+                    </div>
+                </div>
+                <div class="terminal-body" id="terminal-content">
+                    <div id="input-line-container" style="display: flex;">
+                        <span class="prompt">➜</span>
+                        <input type="text" id="user-input" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+    </section>
+    <nav class="pager" aria-label="Otros proyectos">
+        <a class="pager-link" href="crud%20completo.html">
+            <span class="pager-dir">← Anterior</span>
+            <span class="pager-title">Gestor de Clientes</span>
+        </a>
+        <a class="pager-link pager-link--next" href="purpfly.html">
+            <span class="pager-dir">Siguiente →</span>
+            <span class="pager-title">Purfly</span>
+        </a>
+    </nav>
+    <footer class="site-footer">
+        <p class="footer-cta">¿Hablamos? <a href="mailto:dominiquefarias21@gmail.com">Escríbeme →</a></p>
+        <ul class="footer-links">
+            <li><a href="https://dominiquefarias.github.io/Curriculum/">Currículum</a></li>
+            <li><a href="https://github.com/dominiquefarias">GitHub</a></li>
+            <li><a href="mailto:dominiquefarias21@gmail.com">Email</a></li>
+        </ul>
+        <p class="footer-meta">© 2026 Dominique Farías Osorio · Hecho a mano en Valencia</p>
     </footer>
 
     <script>

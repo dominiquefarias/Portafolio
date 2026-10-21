@@ -4,129 +4,245 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio — Dominique Farías Osorio</title>
+  <title>Dominique Farías — Portafolio</title>
+  <meta name="description" content="Portafolio de Dominique Farías Osorio, estudiante de DAM en Valencia.">
   <link rel="icon" href="img/favicon1.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/index.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css?v=2">
+  <link rel="stylesheet" href="css/base.css?v=2">
+  <link rel="stylesheet" href="css/index.css?v=7">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js?v=2" defer></script>
 </head>
 
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-brand">
-      <img src="img/favicon1.png" alt="Logo" class="nav-logo">
+  <nav class="topbar">
+    <a href="index.html" class="brand">
+      <img src="img/favicon1.png" alt="" width="36" height="36">
+      <span>Dominique Farías</span>
     </a>
+    <div class="topbar-links">
+      <a href="#proyectos">Proyectos</a>
+      <a href="https://dominiquefarias.github.io/Curriculum/">CV</a>
+      <a href="mailto:dominiquefarias21@gmail.com" class="btn btn-ghost btn-sm">Contacto</a>
+    </div>
   </nav>
 
-  <header>
-    <h1>Dominique Farías Osorio</h1>
-    <h2>Portafolio</h2>
-    <a href="https://dominiquefarias.github.io/Curriculum/" class="btn-contact">Contactar</a>
+  <header class="hero">
+    <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <p class="hero-status"><span class="dot"></span> Disponible para prácticas<span class="status-place"> · Valencia</span></p>
+    <h1 class="hero-title">Hola, soy <span class="text-gradient">Dominique</span>.<br>Construyo apps que resuelven
+      cosas reales.</h1>
+    <p class="hero-lede">Estudiante de Desarrollo de Aplicaciones Multiplataforma. Trabajo de la base de datos a la
+      interfaz con PHP, Python y JavaScript.</p>
+
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos <span aria-hidden="true">↓</span></a>
+      <a href="https://dominiquefarias.github.io/Curriculum/" class="btn btn-ghost">Currículum <span
+          aria-hidden="true">↗</span></a>
+    </div>
+
+    <ul class="hero-stack" aria-label="Tecnologías">
+      <li>PHP</li>
+      <li>Python</li>
+      <li>JavaScript</li>
+      <li>MySQL</li>
+      <li>Flask</li>
+      <li>Linux</li>
+    </ul>
   </header>
 
-  <main>
-    <h3 class="section-title">Mis Proyectos</h3>
+  <main id="proyectos" class="projects">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">// proyectos</p>
+        <h2>Lo que he construido</h2>
+      </div>
+      <div class="filters" role="toolbar" aria-label="Filtrar proyectos">
+        <button class="chip" data-filter="all" aria-pressed="true">Todos</button>
+        <button class="chip" data-filter="web" aria-pressed="false">Web</button>
+        <button class="chip" data-filter="php" aria-pressed="false">PHP</button>
+        <button class="chip" data-filter="python" aria-pressed="false">Python</button>
+      </div>
+    </div>
 
     <div class="projects-grid">
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/paint.png" alt="paint">
+      <article class="card card--featured reveal" data-tags="python web">
+        <div class="card-media cover-art cover--purfly" aria-hidden="true">
+          <span class="cover-mark">{ purfly }</span>
+          <span class="card-badge">★ Destacado</span>
         </div>
-        <div class="card-content">
-          <h3>GET IT DONE</h3>
-          <p>Aplicación de gestión de tareas creada para proyecto final de asignatura.</p>
-          <a href="html/taskmaster.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/Biblioteca_personal.jpg" alt="Biblioteca Personal">
-        </div>
-        <div class="card-content">
-          <h3>BIBLIOTECA PERSONAL</h3>
-          <p>Aplicación de gestión de libros personales creada para un proyecto de clases.</p>
-          <a href="html/Biblioteca_personal.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/chatbot.png" alt="Chatbot">
-        </div>
-        <div class="card-content">
-          <h3>CHATBOT</h3>
-          <p>Chatbot basico creado en clases a partir de un modelo de IA descargada desde internet.</p>
-          <a href="html/chatbot.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/paint.png" alt="paint">
-        </div>
-        <div class="card-content">
-          <h3>PAINT</h3>
-          <p>"Paint" basico creado en clases a partir de HTML, CSS y JavaScript y mejorado posteriormente con IA.</p>
-          <a href="html/paint.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/portal de vivienda.png" alt="Portal de Vivienda">
-        </div>
-        <div class="card-content">
-          <h3>PORTAL DE VIVIENDA</h3>
-          <p>Portal de vivienda creado en clases con base de datos MySQL y PHP, el cual llamamos proyecto camaron.</p>
-          <a href="html/portal_de_vivienda.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/entrenamiento de dragones.png" alt="Entrenamiento de Dragones">
-        </div>
-        <div class="card-content">
-          <h3>ENTRENAMIENTO DE DRAGONES</h3>
-          <p>Simulación de estrategia donde dos dragones entrenan. Uso de lógica condicional avanzada. (Creados a
-            principio de curso)</p>
-          <a href="html/entrenamientos_dragones.html" class="btn-project">Ver Demo</a>
-        </div>
-      </article>
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/listsa_crud.png" alt="Agenda CRUD">
-        </div>
-        <div class="card-content">
-          <h3>AGENDA CRUD</h3>
-          <p>Gestión de clientes en consola usando SQLite. Permite crear, listar, actualizar y borrar
-            registros de forma optimizada. (Creados a principio de curso)</p>
-          <a href="html/crud completo.html" class="btn-project">Ver Demo</a>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>Python</li>
+            <li>Flask</li>
+            <li>Pandas</li>
+          </ul>
+          <h3><a href="html/purpfly.html">Purfly</a></h3>
+          <p>Orquestador laboral para PYMEs chilenas: convierte marcas biométricas en horas trabajadas y genera
+            contratos y anexos en .docx/PDF automáticamente.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
         </div>
       </article>
 
-
-      <article>
-        <div class="card-image-container">
-          <img src="img/imagenes de proyecto/panel_grafico.png" alt="Panel Gráfico">
+      <article class="card reveal" data-tags="php web">
+        <div class="card-media cover-art cover--halloweek" aria-hidden="true">
+          <span class="cover-mark">halloweek.pwa</span>
         </div>
-        <div class="card-content">
-          <h3>PANEL GRÁFICO</h3>
-          <p>Interfaz moderna con Tkinter conectada a MySQL. Visualización de datos en tiempo real con diseño
-            intuitivo. (Creados a principio de curso)
-          </p>
-          <a href="html/frankie.html" class="btn-project">Ver Demo</a>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>PHP</li>
+            <li>PWA</li>
+          </ul>
+          <h3><a href="html/fiesta_halloween.html">Halloweek</a></h3>
+          <p>Aplicación web progresiva para organizar eventos temáticos, con carga de imágenes y gestión de usuarios.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
         </div>
       </article>
 
+      <article class="card reveal" data-tags="php web">
+        <div class="card-media cover-art cover--getitdone" aria-hidden="true">
+          <span class="cover-mark">✓ get_it_done</span>
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>PHP</li>
+            <li>MySQL</li>
+          </ul>
+          <h3><a href="html/taskmaster.html">Get It Done</a></h3>
+          <p>Gestor de tareas académicas creado como proyecto final de asignatura.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
 
+      <article class="card reveal" data-tags="php web">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/Biblioteca_personal.webp" alt="" loading="lazy">
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>PHP</li>
+            <li>MySQL</li>
+          </ul>
+          <h3><a href="html/Biblioteca_personal.html">Biblioteca Personal</a></h3>
+          <p>Digitaliza tu colección de libros con estados de lectura, portadas reales y panel de administración.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
 
+      <article class="card reveal" data-tags="php web">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/portal de vivienda.webp" alt="" loading="lazy">
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>PHP</li>
+            <li>MySQL</li>
+          </ul>
+          <h3><a href="html/portal_de_vivienda.html">Portal de Vivienda</a></h3>
+          <p>Portal inmobiliario con filtrado por municipio y consultas relacionales. En clase lo llamamos «Proyecto
+            Camarón».</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
 
+      <article class="card reveal" data-tags="python">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/chatbot.webp" alt="" loading="lazy">
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>Python</li>
+            <li>ML</li>
+          </ul>
+          <h3><a href="html/chatbot.html">Chatbot</a></h3>
+          <p>Chatbot básico construido en clase a partir de un modelo de IA descargado de internet.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
+
+      <article class="card reveal" data-tags="web">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/paint.webp" alt="" loading="lazy">
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>JavaScript</li>
+            <li>Canvas</li>
+          </ul>
+          <h3><a href="html/paint.html">Paint</a></h3>
+          <p>Aplicación de dibujo con HTML, CSS y JavaScript: colores, grosor de brocha y renderizado en tiempo real.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
+
+      <article class="card reveal" data-tags="python">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/panel_grafico.webp" alt="" loading="lazy">
+          <span class="card-badge card-badge--muted">1.er curso</span>
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>Python</li>
+            <li>Tkinter</li>
+            <li>MySQL</li>
+          </ul>
+          <h3><a href="html/frankie.html">Panel Gráfico</a></h3>
+          <p>Interfaz con Tkinter conectada a MySQL para visualizar datos en tiempo real.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
+
+      <article class="card reveal" data-tags="python">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/listsa_crud.webp" alt="" loading="lazy">
+          <span class="card-badge card-badge--muted">1.er curso</span>
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>Python</li>
+            <li>SQLite</li>
+          </ul>
+          <h3><a href="html/crud completo.html">Agenda CRUD</a></h3>
+          <p>Gestión de clientes en consola: crear, listar, actualizar y borrar registros de forma optimizada.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
+
+      <article class="card reveal" data-tags="python">
+        <div class="card-media">
+          <img src="img/imagenes de proyecto/entrenamiento de dragones.webp" alt="" loading="lazy">
+          <span class="card-badge card-badge--muted">1.er curso</span>
+        </div>
+        <div class="card-body">
+          <ul class="card-tags">
+            <li>Python</li>
+          </ul>
+          <h3><a href="html/entrenamientos_dragones.html">Entrenamiento de Dragones</a></h3>
+          <p>Simulación de estrategia donde dos dragones entrenan, con lógica condicional avanzada y validación de
+            datos.</p>
+          <span class="card-cta" aria-hidden="true">Ver proyecto <span class="arrow">→</span></span>
+        </div>
+      </article>
     </div>
   </main>
 
-  <footer>
-    <p>© 2026 Dominique Farías Osorio</p>
-    <p>dominiquefarias21@gmail.com | España</p>
+  <footer class="site-footer">
+    <p class="footer-cta">¿Hablamos? <a href="mailto:dominiquefarias21@gmail.com">Escríbeme →</a></p>
+    <ul class="footer-links">
+      <li><a href="https://dominiquefarias.github.io/Curriculum/">Currículum</a></li>
+      <li><a href="https://github.com/dominiquefarias">GitHub</a></li>
+      <li><a href="mailto:dominiquefarias21@gmail.com">Email</a></li>
+    </ul>
+    <p class="footer-meta">© 2026 Dominique Farías Osorio · Hecho a mano en Valencia</p>
   </footer>
 
 </body>

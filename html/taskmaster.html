@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get It Done — Dominique Farías</title>
+    <meta name="description" content="Gestor académico para organizar asignaturas, priorizar entregas y controlar fechas límite con temporizadores en tiempo real.">
+    <link rel="icon" href="../img/favicon1.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css?v=2">
+    <link rel="stylesheet" href="../css/base.css?v=2">
+    <link rel="stylesheet" href="../css/project.css?v=7">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
+    <script src="../js/project.js?v=1" defer></script>
+</head>
+
+<body>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <nav class="topbar">
+        <a href="../index.html" class="brand">
+            <img src="../img/favicon1.png" alt="" width="36" height="36">
+            <span>Dominique Farías</span>
+        </a>
+        <a href="../index.html#proyectos" class="btn btn-ghost btn-sm">← Todos los proyectos</a>
+    </nav>
+
+    <header class="project-hero">
+        <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="project-hero-inner">
+            <div class="project-hero-text">
+                <p class="crumbs"><a href="../index.html#proyectos">Proyectos</a><span aria-hidden="true">/</span><span>Get It Done</span></p>
+                <p class="eyebrow">// PHP & MySQL</p>
+                <h1><span class="text-gradient">Get It Done</span></h1>
+                <p class="hero-lede">Gestor académico para organizar asignaturas, priorizar entregas y controlar fechas límite con temporizadores en tiempo real.</p>
+                <div class="hero-actions">
+                    <a href="https://github.com/rutsaisan/TaskMaster" target="_blank" rel="noopener" class="btn btn-primary"><i data-lucide="github"></i> Repositorio de GitHub</a>
+                </div>
+            </div>
+            <figure class="hero-visual cover-art cover--getitdone" aria-hidden="true">
+                <span class="cover-mark">✓ get_it_done</span>
+            </figure>
+        </div>
+    </header>
+
+    <div class="project-layout">
+        <aside class="toc" aria-label="En esta página">
+            <p class="toc-title">En esta página</p>
+            <ol>
+                <li><a href="#descripcion">Descripción</a></li>
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#estructura">Estructura</a></li>
+                <li><a href="#capturas">Capturas</a></li>
+            </ol>
+        </aside>
+
+        <main class="project-main">
+            <section id="descripcion" class="p-section reveal">
+                <h2><span class="sec-num">01</span> Descripción</h2>
+                <p class="lead">Aplicación web diseñada para la organización académica integral. Permite organizar asignaturas, priorizar entregas, gestionar fechas límite mediante temporizadores en tiempo real y cambiar de idioma de forma fluida.</p>
+                <ul class="highlights">
+                    <li class="highlight" style="--c: #cba6f7"><strong>Multi-idioma</strong><span>i18n nativo</span></li>
+                    <li class="highlight" style="--c: #89b4fa"><strong>Asignaturas</strong><span>Vinculación relacional</span></li>
+                    <li class="highlight" style="--c: #fab387"><strong>Prioridades</strong><span>Seguimiento dinámico</span></li>
+                </ul>
+            </section>
+
+            <section id="funcionalidades" class="p-section reveal">
+                <h2><span class="sec-num">02</span> Funcionalidades</h2>
+                <div class="feature-grid">
+                    <article class="panel">
+                        <div class="panel-head">
+                            <span class="panel-icon"><i data-lucide="layers"></i></span>
+                            <h3>Funcionalidades</h3>
+                        </div>
+                        <ul class="checklist">
+                            <li><strong>Control de Entregas:</strong> Ponderación de tareas por nivel de prioridad y fecha límite.</li>
+                            <li><strong>Soporte i18n:</strong> Módulo multi-idioma integrado mediante diccionario dinámico (<code>idiomas.php</code>).</li>
+                            <li><strong>Autenticación Segura:</strong> Registro e inicio de sesión con manejo de sesiones PHP.</li>
+                            <li><strong>Panel Interactivo:</strong> Modals interactivos y componentes dinámicos en JavaScript.</li>
+                        </ul>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-head">
+                            <span class="panel-icon"><i data-lucide="cpu"></i></span>
+                            <h3>Tecnologías</h3>
+                        </div>
+                        <ul class="tech-list">
+                            <li>PHP 8.x</li>
+                            <li>MySQL</li>
+                            <li>JavaScript ES6</li>
+                            <li>CSS3 Custom</li>
+                            <li>HTML5</li>
+                        </ul>
+                        <p class="note">Desarrollado con arquitectura Cliente-Servidor.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="estructura" class="p-section reveal">
+                <h2><span class="sec-num">03</span> Estructura del código</h2>
+                <figure class="window">
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class="window-title">TaskMaster</span>
+                    </div>
+<pre class="tree"><span class="t-dir">TaskMaster/</span>
+<span class="t-guide">├── </span><span class="t-dir">config/</span>
+<span class="t-guide">│   ├── </span><span class="t-file">db.php</span> <span class="t-note">(Conexión PDO / MySQLi)</span>
+<span class="t-guide">│   └── </span><span class="t-file">idiomas.php</span> <span class="t-note">(Traducciones i18n)</span>
+<span class="t-guide">├── </span><span class="t-dir">css/</span> <span class="t-note">(Estilos personalizados y variables)</span>
+<span class="t-guide">├── </span><span class="t-dir">js/</span> <span class="t-note">(Lógica cliente, temporizadores y modals)</span>
+<span class="t-guide">├── </span><span class="t-dir">acciones/</span>
+<span class="t-guide">│   ├── </span><span class="t-file">editar_tarea.php</span>
+<span class="t-guide">│   └── </span><span class="t-file">eliminar_asignatura.php</span>
+<span class="t-guide">├── </span><span class="t-file">index.php</span> <span class="t-note">(Dashboard principal)</span>
+<span class="t-guide">└── </span><span class="t-file">login.php</span></pre>
+                </figure>
+            </section>
+
+            <section id="capturas" class="p-section reveal">
+                <h2><span class="sec-num">04</span> Capturas del sistema</h2>
+                <div class="gallery">
+                    <figure class="shot">
+                        <button class="shot-btn" type="button" aria-label="Ampliar: Dashboard de asignaturas">
+                            <img src="../img/capturas de pantallas/taskmaster/dashboard.png" alt="Dashboard de asignaturas" loading="lazy">
+                        </button>
+                        <figcaption>Dashboard de asignaturas</figcaption>
+                    </figure>
+                    <figure class="shot">
+                        <button class="shot-btn" type="button" aria-label="Ampliar: Gestión de tareas y prioridades">
+                            <img src="../img/capturas de pantallas/taskmaster/tareas.png" alt="Gestión de tareas y prioridades" loading="lazy">
+                        </button>
+                        <figcaption>Gestión de tareas y prioridades</figcaption>
+                    </figure>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <nav class="pager" aria-label="Otros proyectos">
+        <a class="pager-link" href="fiesta_halloween.html">
+            <span class="pager-dir">← Anterior</span>
+            <span class="pager-title">Halloweek</span>
+        </a>
+        <a class="pager-link pager-link--next" href="Biblioteca_personal.html">
+            <span class="pager-dir">Siguiente →</span>
+            <span class="pager-title">Biblioteca Personal</span>
+        </a>
+    </nav>
+
+    <footer class="site-footer">
+        <p class="footer-cta">¿Hablamos? <a href="mailto:dominiquefarias21@gmail.com">Escríbeme →</a></p>
+        <ul class="footer-links">
+            <li><a href="https://dominiquefarias.github.io/Curriculum/">Currículum</a></li>
+            <li><a href="https://github.com/dominiquefarias">GitHub</a></li>
+            <li><a href="mailto:dominiquefarias21@gmail.com">Email</a></li>
+        </ul>
+        <p class="footer-meta">© 2026 Dominique Farías Osorio · Hecho a mano en Valencia</p>
+    </footer>
+
+</body>
+
+</html>

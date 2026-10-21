@@ -1,0 +1,65 @@
+/* ---------------------------------------------------- */
+/* --- Sistema de diseño compartido (Midnight Lavender + Apricot) --- */
+/* Se carga antes que el CSS de cada página. */
+:root {
+    /* Superficies */
+    --bg: #13111C;
+    --surface: #1C1A29;
+    --surface-2: #252336;
+    --border: #2E2B42;
+    --border-strong: #423D5E;
+
+    /* Texto */
+    --text: #F4F2FA;
+    --text-muted: #A9A6BE;
+    --text-subtle: #8A86A3;
+
+    /* Acentos */
+    --primary: #A78BFA;
+    --primary-hover: #BBA5FC;
+    --primary-soft: rgba(167, 139, 250, .12);
+    --on-primary: #13111C;
+    --secondary: #F5B38A;
+    --secondary-soft: rgba(245, 179, 138, .12);
+    --success: #7DD3C0;
+    --gradient-brand: linear-gradient(120deg, #C4B5FD 0%, #A78BFA 45%, #F5B38A 100%);
+
+    /* Tipografía */
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Forma y profundidad */
+    --radius: 16px;
+    --radius-lg: 24px;
+    --shadow-card: 0 8px 24px -8px rgba(0, 0, 0, .5);
+    --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, .6), 0 0 0 1px rgba(167, 139, 250, .08);
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+
+    /* Sintaxis de código (páginas con bloques de código) */
+    --code-bg: #1A1826;
+    --code-text: #cdd6f4;
+    --code-comment: #9499B8;
+    --code-keyword: #cba6f7;
+    --code-func: #89b4fa;
+    --code-string: #a6e3a1;
+    --code-number: #fab387;
+
+    /* Alias para los CSS antiguos de las subpáginas */
+    --bg-body: var(--bg);
+    --white: var(--surface);
+    --primary-color: var(--primary);
+    --primary-dark: var(--text);
+    --accent-color: var(--primary);
+    --text-secundary: var(--text-muted);
+    --border-color: var(--border);
+    --glass-bg: rgba(19, 17, 28, .72);
+    --gradient-main: var(--gradient-brand);
+    --gradient-text: var(--gradient-brand);
+}
+
+/* --- Base compartida: titulares con la fuente display --- */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -.01em;
+}
