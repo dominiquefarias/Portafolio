@@ -21,7 +21,9 @@
     --on-primary: #13111C;
     --secondary: #F5B38A;
     --secondary-soft: rgba(245, 179, 138, .12);
-    --success: #7DD3C0;
+    --mint: #7DD3C0;            /* color del logo */
+    --success: var(--mint);
+    --flor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 20 20'%3E%3Cellipse cy='-5' rx='3.3' ry='5'/%3E%3Cellipse cy='-5' rx='3.3' ry='5' transform='rotate(72)'/%3E%3Cellipse cy='-5' rx='3.3' ry='5' transform='rotate(144)'/%3E%3Cellipse cy='-5' rx='3.3' ry='5' transform='rotate(216)'/%3E%3Cellipse cy='-5' rx='3.3' ry='5' transform='rotate(288)'/%3E%3C/svg%3E");  /* hibisco del logo (máscara) */
     --gradient-brand: linear-gradient(120deg, #C4B5FD 0%, #A78BFA 45%, #F5B38A 100%);
 
     /* Tipografía */

@@ -224,12 +224,54 @@ img { display: block; max-width: 100%; }
     to { opacity: 1; translate: 0 0; }
 }
 
+/* --- Olas (sello del logo): borde inferior del hero y superior del footer --- */
+.waves {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 70px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.waves svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.waves path { animation: waves-flow 18s linear infinite; }
+.waves .wave-mid { animation-duration: 13s; animation-direction: reverse; }
+.waves .wave-front { animation-duration: 24s; fill: var(--wave-fill, var(--bg)); }
+
+@keyframes waves-flow {
+    to { transform: translateX(-1200px); }
+}
+
 /* --- Footer --- */
 .site-footer {
-    padding: 3.5rem 20px 2.5rem;
+    position: relative;
+    padding: calc(70px + 3rem) 20px 2.5rem;
     text-align: center;
-    border-top: 1px solid var(--border);
-    background: radial-gradient(60% 120% at 50% 100%, rgba(167, 139, 250, .08), transparent 70%);
+    background:
+        radial-gradient(60% 90% at 50% 100%, rgba(125, 211, 192, .08), transparent 70%) no-repeat,
+        linear-gradient(to bottom, transparent 69px, var(--surface) 69px);
+}
+
+.site-footer .waves {
+    --wave-fill: var(--surface);
+    top: 0;
+}
+
+.footer-logo {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    50% { transform: translateY(-6px) rotate(-4deg); }
 }
 
 .footer-cta {
@@ -248,8 +290,9 @@ img { display: block; max-width: 100%; }
 
 .footer-links {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: .5rem 1rem;
     margin: 0 0 2rem;
     padding: 0;
     list-style: none;
@@ -262,6 +305,23 @@ img { display: block; max-width: 100%; }
 }
 
 .footer-links a:hover { color: var(--text); }
+
+.footer-links li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Hibisco como separador */
+.footer-links li + li::before {
+    content: "";
+    width: .7rem;
+    height: .7rem;
+    background: var(--mint);
+    -webkit-mask: var(--flor) center / contain no-repeat;
+    mask: var(--flor) center / contain no-repeat;
+    opacity: .8;
+}
 
 .footer-meta {
     margin: 0;
