@@ -39,8 +39,14 @@ shots.forEach((shot) => {
     shot.classList.add('is-missing');
     shot.querySelector('.shot-btn').disabled = true;
   };
-  if (img.complete && img.naturalWidth === 0) markMissing();
-  else img.addEventListener('error', markMissing);
+  img.addEventListener('error', markMissing);
+  // Si ya figura como "completa" sin tamaño (falló antes del script, o es una carga diferida
+  // pendiente en Firefox), se comprueba con una petición aparte en vez de darla por ausente
+  if (img.complete && img.naturalWidth === 0) {
+    const probe = new Image();
+    probe.onerror = markMissing;
+    probe.src = img.currentSrc || img.src;
+  }
 });
 
 if (shots.length) {
